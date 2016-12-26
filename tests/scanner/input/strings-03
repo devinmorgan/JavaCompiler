@@ -1,0 +1,2 @@
+// Invalid! Missing \ before '"'
+"@@@;;; " public main"

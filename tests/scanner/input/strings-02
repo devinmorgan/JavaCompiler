@@ -1,0 +1,6 @@
+// Valid! Testing escape characters
+    "@@@;;; \" public main"
+    "@@@;;; \' public main"
+    "@@@;;; \t public main"
+    "@@@;;; \n public main"
+    "@@@;;; \\ public main"
