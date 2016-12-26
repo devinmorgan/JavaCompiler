@@ -1,0 +1,18 @@
+// Valid! All of the reserved words
+class
+public
+static
+void
+main
+String
+extends
+int
+boolean
+if
+return
+while
+System.out.println
+true
+false
+this
+new
