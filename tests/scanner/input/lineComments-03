@@ -1,0 +1,4 @@
+// Invalid! single comments last 1 line so "valid" should throw an error
+public // /*not a
+valid comment */
+main

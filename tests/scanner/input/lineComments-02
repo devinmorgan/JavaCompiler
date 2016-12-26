@@ -1,0 +1,3 @@
+// Valid! Line Comments lasts exactly 1 line
+public // valid comment
+main
