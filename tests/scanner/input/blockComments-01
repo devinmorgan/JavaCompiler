@@ -1,0 +1,3 @@
+// Valid! Block Comments can contain anything in between the "/*" and the "*/". They must also exist within a line
+public /* @@@;;; */ main
+public /* /* */ main

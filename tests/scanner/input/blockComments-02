@@ -1,0 +1,4 @@
+// Valid! Block Comments can contain anything in between the "/*" and the "*/". They can last multiple lines
+public /*
+comment here
+*/ main

@@ -1,0 +1,2 @@
+// Invalid! Block Comments cannot be nested
+public /* /* */ */ main
