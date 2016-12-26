@@ -1,4 +1,4 @@
-lexer grammar Scanner;
+lexer grammar JavaScanner;
 
 options
 {
@@ -7,7 +7,7 @@ options
 }
 
 @lexer::header {
-    package grammar;
+    package grammar.scanner;
 }
 
 // Selectively turns on debug tracing mode.
@@ -86,12 +86,11 @@ RES_IF : 'if';
 RES_RETURN : 'return';
 RES_WHILE : 'while';
 RES_PRINT : 'System.out.println';
-RES_TRUE : 'true';
-RES_FALSE : 'false';
 RES_THIS : 'this';
 RES_NEW : 'new';
 
 // main tokens
+BOOL : 'true' | 'false';
 STRING : '"' (ESC | ALLOWED_CHARS )* '"';
 INT : DIGIT+;
 ID : (ALL_LETTERS | '_')(ALL_LETTERS | DIGIT | '_')*;
