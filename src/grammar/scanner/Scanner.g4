@@ -35,9 +35,9 @@ options
 }
 
 
-// comments and white space
+// Comments and White Space
 WS_ : (' ' | '\t' | '\n' ) -> skip;
-BLOCK_COMMENT : '/*' (BLOCK_COMMENT | . )*? '*/' -> skip ;
+BLOCK_COMMENT : '/*' .*? '*/' -> skip ;
 LINE_COMMENT  : '//' .*? '\n' -> skip ;
 
 // Miscillaneous characters
@@ -49,6 +49,7 @@ L_CURL : '{';
 R_CURL : '}';
 COMMA : ',';
 SEMI_COL :  ';';
+DOT : '.';
 
 // boolean ops
 LT_OP : '<';
@@ -71,7 +72,7 @@ MOD_OP : '%';
 // assignment ops
 AS_OP : '=';
 
-// Reserved words
+// reserved words
 RES_CLASS : 'class';
 RES_PUBLIC : 'public';
 RES_STATIC : 'static';
@@ -96,7 +97,7 @@ INT : DIGIT+;
 ID : (ALL_LETTERS | '_')(ALL_LETTERS | DIGIT | '_')*;
 
 // fragments
-fragment ESC : '\\n' | '\\t' | '\\\\' | '\\"' | '\\\''; //'\\' ('n' | 't' | '\\' | '"' | '\'');
+fragment ESC : '\\' ('n' | 't' | '\\' | '"' | '\'');
 fragment ALLOWED_CHARS : ' '..'!' | '#'..'&' | '('..'[' | ']'..'~' ;
 fragment DIGIT : '0'..'9';
 fragment ALL_LETTERS : 'a'..'z' | 'A'..'Z';
