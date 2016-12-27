@@ -1,0 +1,4 @@
+line 2:0  IDENT abc123_
+line 3:0  IDENT abc_123
+line 4:0  IDENT _abc123
+line 5:0  IDENT _123abc

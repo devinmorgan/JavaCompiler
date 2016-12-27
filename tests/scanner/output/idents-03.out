@@ -1,0 +1,4 @@
+line 2:0  IDENT abc
+line 2:3  token recognition error at: '@'
+line 2:4  INT 123
+line 2:7  IDENT _
