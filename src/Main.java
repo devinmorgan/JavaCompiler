@@ -1,17 +1,14 @@
 import grammar.scanner.JavaScanner;
 import org.antlr.v4.runtime.*;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.TokenStream;
-import org.antlr.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.BitSet;
-import java.util.Scanner;
 
 
 /**
@@ -23,32 +20,22 @@ import java.util.Scanner;
 class Main {
 
     private static void runScannerTests() {
+        String scannerTestsInputDirectory = "tests/scanner/input/";
+        File root = new File(scannerTestsInputDirectory);
+        File[] files = root.listFiles(new NoHiddenFilesFilter());
 
-        // get all the tests for the scanner
-        String scannerTestsDirectory = "tests/scanner/input";
-
-        // run each scanner test
-        File root = new File(scannerTestsDirectory);
-        File[] files = root.listFiles(new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return !file.isHidden();
-            }
-        });
-
+        StringBuilder testData = new StringBuilder();
+        int numTests = files.length;
+        int passedTestsCount = 0;
 
         for (File file : files) {
-
-            // print file name
-            System.out.println(file.getPath());
-
             try {
                 CharStream stream = new ANTLRFileStream(file.getPath());
                 JavaScanner scanner = new JavaScanner(stream);
-                PrintStream outputStream = System.out;
+                StringBuilder outputBuilder = new StringBuilder();
 
                 // use the custom ErrorListener to detect syntax errors from Scanner
-                ANTLRErrorListener errorListener = new ScannerErrorListener(outputStream);
+                ANTLRErrorListener errorListener = new ScannerErrorListener(outputBuilder);
                 scanner.removeErrorListeners();
                 scanner.addErrorListener(errorListener);
 
@@ -57,7 +44,7 @@ class Main {
                     String type = "";
                     String text = token.getText();
 
-                    // collect relevant data about the token in a human readable format
+                    // collect relevant data in a human readable format
                     if (token.getType() == JavaScanner.INT) {
                         type = " INT";
                     }
@@ -73,23 +60,37 @@ class Main {
                     else if (token.getType() >= JavaScanner.RES_CLASS && token.getType() <= JavaScanner.RES_NEW) {
                         type = "RES_WORD";
                     }
+                    outputBuilder.append("line " + token.getLine() + ":" + token.getCharPositionInLine()
+                            + " " + type + " " + text + "\n");
+                }
 
-                    // aggregate this data in the outputStream to help debugging
-                    outputStream.println("line " + token.getLine() + ":" + token.getCharPositionInLine() +
-                            " " + type + " " + text);
+                // load the expected output file
+                String scannerTestsOutputDirectory = "tests/scanner/output/";
+                String scannerTestExtension = ".out";
+                StringBuilder expectedOuput
+                        = Main.readFile(scannerTestsOutputDirectory + file.getName() + scannerTestExtension);
+
+                // compare the actual output with the expected output
+                boolean passTest = outputBuilder.toString().equals(expectedOuput.toString());
+                if (passTest) {
+                    passedTestsCount++;
+                }
+                else {
+                    testData.append("Testing " + file.getPath() + ":\n");
+                    testData.append("Failed.\n");
+                    testData.append(outputBuilder);
+                    testData.append("\n");
+                    testData.append(expectedOuput);
+                    testData.append("\n\n");
                 }
             }
             catch (IOException e) {
                 System.err.println("There was an error: " + file.toString() + " " + e);
                 System.exit(1);
             }
-            catch (NoViableAltException e) {
-                System.err.println("There was an error: " + file.toString() + " " + e);
-                System.exit(1);
-            }
-
-            System.out.println("\n\n");
         }
+        System.out.println("Passed " + passedTestsCount + "/" + numTests + " scanner tests\n");
+        System.out.println(testData);
     }
 
     public static void main(String[] args) {
@@ -98,15 +99,15 @@ class Main {
 
     private static class ScannerErrorListener implements ANTLRErrorListener {
 
-        private final PrintStream printStream;
+        private StringBuilder stringBuilder;
 
-        public ScannerErrorListener(PrintStream printStream) {
-            this.printStream = printStream;
+        public ScannerErrorListener(StringBuilder stringBuilder) {
+            this.stringBuilder = stringBuilder;
         }
 
         @Override
         public void syntaxError(Recognizer<?, ?> recognizer, Object o, int i, int i1, String s, RecognitionException e) {
-            this.printStream.println("line " + i + ":" + i1 + "  " + s);
+            this.stringBuilder.append("line " + i + ":" + i1 + "  " + s + "\n");
         }
 
         @Override
@@ -125,7 +126,29 @@ class Main {
         }
 
     }
+
+    private static class NoHiddenFilesFilter implements FileFilter {
+        @Override
+        public boolean accept(File file) {
+            return !file.isHidden();
+        }
+    }
+
+    private static StringBuilder readFile(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append("\n");
+                line = br.readLine();
+            }
+            return sb;
+        } finally {
+            br.close();
+        }
+    }
+
 }
-
-
-// we need to make a function that runs the semantics tests
