@@ -1,0 +1,5 @@
+line 2:4  STRING "@@@;;; \" public main"
+line 3:4  STRING "@@@;;; \' public main"
+line 4:4  STRING "@@@;;; \t public main"
+line 5:4  STRING "@@@;;; \n public main"
+line 6:4  STRING "@@@;;; \\ public main"

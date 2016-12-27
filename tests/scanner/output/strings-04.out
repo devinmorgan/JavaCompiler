@@ -1,0 +1,4 @@
+line 2:0  token recognition error at: '"@@@;;; ''
+line 2:10 RES_WORD public
+line 2:17 RES_WORD main
+line 2:21  token recognition error at: '"\n'
