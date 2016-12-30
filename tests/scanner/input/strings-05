@@ -1,0 +1,4 @@
+// incorrectly formatted strings
+"there isn't a backslash before the \'"
+"\i is not an escape character"
+"too many double " quotes "

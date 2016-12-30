@@ -1,0 +1,3 @@
+// multi-line comments do not nest
+/* this isn't a /* valid comment because
+multi-line comments */ do not nest */

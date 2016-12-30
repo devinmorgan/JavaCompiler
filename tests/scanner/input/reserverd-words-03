@@ -1,0 +1,3 @@
+// make sure reserved words are deliminated by spaces
+voidStringthiswhilebreakintclassextendsifnewinterfaceimplementselseboolnullforreturn
+IO.printStringIO.printIntIO.readIntIO.readLine

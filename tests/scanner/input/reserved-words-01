@@ -1,0 +1,22 @@
+// make sure all the reserved words get recognized
+void
+String
+this
+while
+break
+int
+class
+extends
+if
+new
+interface
+implements
+else
+bool
+null
+for
+return
+IO.printString
+IO.printInt
+IO.readInt
+IO.readLine

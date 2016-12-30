@@ -1,0 +1,3 @@
+// invalid single or multi-line comment
+// this single-line comment turns /* into
+an invalid multi-lined comment */

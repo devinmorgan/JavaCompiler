@@ -1,0 +1,6 @@
+// make sure boolean constants are case sensitive
+True
+true
+False
+false
+truefalse
