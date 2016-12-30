@@ -4,6 +4,7 @@ String
 this
 while
 break
+continue
 int
 class
 extends
@@ -12,7 +13,7 @@ new
 interface
 implements
 else
-bool
+boolean
 null
 for
 return
