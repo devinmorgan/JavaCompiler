@@ -1,5 +1,0 @@
-// Valid! Identifiers consist of underscores and alphanumerics
-abc123_
-abc_123
-_abc123
-_123abc
