@@ -1,0 +1,13 @@
+====================Parser Tests====================
+the tests either pass or they don't; there is no output
+
+1) Program
+    -- can only contain VarDecls, FuncDecls, ClassDecls, InterfaceDecls
+    -- they can appear in any order throughout the program
+
+2) VarDecl
+    -- must follow a type
+    -- the var itself is an identifier
+    -- must be followed by ";"
+
+3) types
