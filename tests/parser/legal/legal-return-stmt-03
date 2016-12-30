@@ -1,0 +1,4 @@
+// valid ReturnStmt
+String foobar() {
+    return null;
+}

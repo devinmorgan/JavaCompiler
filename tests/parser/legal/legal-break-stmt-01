@@ -1,0 +1,4 @@
+// valid BreakStmt
+void main() {
+    break;
+}

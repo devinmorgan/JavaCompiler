@@ -1,0 +1,2 @@
+// invalid FuncDecl
+int foo(int i, j, k) { }    // missing Type's for j and k

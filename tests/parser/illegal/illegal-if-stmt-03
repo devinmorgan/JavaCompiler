@@ -1,0 +1,6 @@
+// invalid IfStmt
+void main() {
+    else {
+        // needs an if to be valid
+    }
+}

@@ -1,0 +1,4 @@
+// valid WhileStmt
+void main() {
+    while (true) { }
+}

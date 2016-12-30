@@ -1,0 +1,4 @@
+// valid BinaryExpr
+void main() {
+    var = foo() + bar() / foobar();
+}

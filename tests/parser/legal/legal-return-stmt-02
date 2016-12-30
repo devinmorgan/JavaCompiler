@@ -1,0 +1,4 @@
+// valid ReturnStmt
+boolean bar() {
+    return ;
+}

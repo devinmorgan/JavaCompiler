@@ -1,0 +1,3 @@
+// valid Params
+Obj[] foo(int i, boolean b, String s) { }
+void main() { }

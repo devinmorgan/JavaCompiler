@@ -1,0 +1,7 @@
+// invalid StmtBlock
+void main() {
+    int i;
+    print("hello world");
+    { // no closing parenthesis
+    boolean b;
+}

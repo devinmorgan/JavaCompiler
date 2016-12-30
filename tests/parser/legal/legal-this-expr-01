@@ -1,0 +1,4 @@
+// valid this
+void main() {
+    this;
+}

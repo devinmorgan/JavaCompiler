@@ -1,0 +1,2 @@
+// invalid Params
+int foo(int i, boolean b; String s) { } // use , not ;

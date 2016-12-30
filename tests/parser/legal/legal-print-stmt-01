@@ -1,0 +1,4 @@
+// valid PrintStmt
+void main() {
+    print ("hello world");
+}

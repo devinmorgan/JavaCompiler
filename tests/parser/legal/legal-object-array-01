@@ -1,0 +1,5 @@
+// valid object/array Expr
+void main() {
+    new Class();
+    new Class[5];
+}

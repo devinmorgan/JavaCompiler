@@ -1,0 +1,4 @@
+// valid ReturnStmt
+int foo() {
+    return 10 + 10;
+}

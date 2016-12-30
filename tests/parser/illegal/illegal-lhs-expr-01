@@ -1,0 +1,4 @@
+// invalid Lhs Expr (bad property access)
+void main() {
+    var property = 5; // missing the .
+}

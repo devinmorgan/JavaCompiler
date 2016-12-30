@@ -1,0 +1,4 @@
+// invalid object/array Expr
+void main() {
+    new void(); // void is not a Type
+}

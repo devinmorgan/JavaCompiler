@@ -1,0 +1,5 @@
+// invalid IfStmt
+void main() {
+    if (true) {}
+    else (false) {} // else's don't have conditions!
+}

@@ -1,0 +1,5 @@
+// valid MethSig
+interface A {
+    String[] main() { };
+    void foo(int i, boolean b, String s, Class c) { };
+}

@@ -1,0 +1,5 @@
+// invalid MethSig
+interface A {
+    void foo(int i, boolean b, String s, Class c) { };
+    String[] main() { } // missing semi-colon
+}

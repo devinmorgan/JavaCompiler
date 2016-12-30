@@ -1,0 +1,6 @@
+// valid IfStmt
+void f() {
+    if (true) { }
+    if (false == true) { }
+    else { }
+}

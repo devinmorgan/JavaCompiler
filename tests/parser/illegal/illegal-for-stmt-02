@@ -1,0 +1,4 @@
+// invalid ForStmt
+void main() {
+    for (; true; )  // missing stmt after words
+}

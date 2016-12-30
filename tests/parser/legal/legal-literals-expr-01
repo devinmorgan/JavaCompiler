@@ -1,0 +1,7 @@
+// Expr valid literals
+void main() {
+    5;
+    "hello";
+    null;
+    true;
+}

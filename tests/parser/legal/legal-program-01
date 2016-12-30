@@ -1,0 +1,9 @@
+// valid Program
+int i;
+void main() { }
+Obj B;
+
+class Obj extends C { }
+String foo(boolean a, Obj o) { }
+
+interface Binky { }

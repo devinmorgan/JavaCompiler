@@ -1,0 +1,8 @@
+// valid ClassDecl
+class A { }
+class B extends C { }
+class D extends E implements F, G {
+    boolean b;
+    void foo(int i, int j) { return i; }
+    String s;
+}
