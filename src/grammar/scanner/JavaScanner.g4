@@ -73,21 +73,28 @@ MOD_OP : '%';
 AS_OP : '=';
 
 // reserved words
-RES_CLASS : 'class';
-RES_PUBLIC : 'public';
-RES_STATIC : 'static';
 RES_VOID : 'void';
-RES_MAIN : 'main';
 RES_STRING : 'String';
-RES_EXTEND : 'extends';
-RES_INT : 'int';
-RES_BOOLEAN : 'boolean';
-RES_IF : 'if';
-RES_RETURN : 'return';
-RES_WHILE : 'while';
-RES_PRINT : 'System.out.println';
 RES_THIS : 'this';
+RES_WHILE : 'while';
+RES_BREAK : 'break';
+RES_READ_INT : 'readInt';
+RES_INT : 'int';
+RES_CLASS : 'class';
+RES_EXTENDS : 'extends';
+RES_IF : 'if';
 RES_NEW : 'new';
+RES_READ_LINE : 'readLine';
+RES_INTERFACE : 'interface';
+RES_IMPLEMENTS : 'implements';
+RES_ELSE : 'else';
+RES_BOOLEAN : 'boolean';
+RES_NULL : 'null';
+RES_FOR : 'for';
+RES_RETURN : 'return';
+RES_PRINT : 'print';
+RES_CONTINUE : 'continue';
+
 
 // main tokens
 BOOL : 'true' | 'false';
@@ -96,7 +103,7 @@ INT : DIGIT+;
 ID : (ALL_LETTERS | '_')(ALL_LETTERS | DIGIT | '_')*;
 
 // fragments
-fragment ESC : '\\' ('n' | 't' | '\\' | '"' | '\'');
+fragment ESC : ('\\n' | '\\t' | '\\\\' | '\\"' | '\\\'');
 fragment ALLOWED_CHARS : ' '..'!' | '#'..'&' | '('..'[' | ']'..'~' ;
 fragment DIGIT : '0'..'9';
 fragment ALL_LETTERS : 'a'..'z' | 'A'..'Z';
