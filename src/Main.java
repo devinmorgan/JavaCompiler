@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.BitSet;
 
 
@@ -57,12 +58,11 @@ class Main {
                     else if (token.getType() == JavaScanner.ID) {
                         type = " IDENT";
                     }
-                    else if (token.getType() >= JavaScanner.RES_CLASS && token.getType() <= JavaScanner.RES_NEW) {
-                        type = "RES_WORD";
-                    }
                     outputBuilder.append("line " + token.getLine() + ":" + token.getCharPositionInLine()
                             + " " + type + " " + text + "\n");
                 }
+
+//                System.out.println(outputBuilder.toString()); // uncomment to debug
 
                 // load the expected output file
                 String scannerTestsOutputDirectory = "tests/scanner/output/";
