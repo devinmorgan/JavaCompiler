@@ -1,6 +1,0 @@
-// test the permitted escape characters
-"newline \n "
-"tab \t "
-"double quote \" "
-"single quote \' "
-"backslash \\ "
