@@ -1,0 +1,9 @@
+line 2:0  token recognition error at: '"this string spills onto 2\n'
+line 3:0  IDENT lines
+line 3:5  ,
+line 3:7  IDENT which
+line 3:13  IDENT isn
+line 3:16  token recognition error at: '''
+line 3:17  IDENT t
+line 3:19  IDENT allowed
+line 3:26  token recognition error at: '"\n'

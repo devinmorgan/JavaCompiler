@@ -1,0 +1,4 @@
+line 2:0  STRING "hello world"
+line 3:0  STRING "123"
+line 4:0  STRING "@#/*^%"
+line 5:0  STRING "// a comment in a string?"

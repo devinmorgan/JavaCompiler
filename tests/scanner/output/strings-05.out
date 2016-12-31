@@ -1,0 +1,19 @@
+line 2:0  token recognition error at: '"there isn''
+line 2:11  IDENT t
+line 2:13  IDENT a
+line 2:15  IDENT backslash
+line 2:25  IDENT before
+line 2:32  IDENT the
+line 2:36  token recognition error at: '\'
+line 2:37  token recognition error at: '''
+line 2:38  token recognition error at: '"\n'
+line 3:0  token recognition error at: '"\i'
+line 3:4  IDENT is
+line 3:7  IDENT not
+line 3:11  IDENT an
+line 3:14  IDENT escape
+line 3:21  IDENT character
+line 3:30  token recognition error at: '"\n'
+line 4:0  STRING "too many double "
+line 4:19  IDENT quotes
+line 4:26  token recognition error at: '"\n'

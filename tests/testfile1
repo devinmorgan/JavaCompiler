@@ -11,3 +11,15 @@ the tests either pass or they don't; there is no output
     -- must be followed by ";"
 
 3) types
+
+
+
+///////////////////////////////////////////////////////
+
+1) write a test for each possible one
+-- one that is broken
+-- 1 that works
+2) write tests for objects that aren't allowed
+-- int x = 5;
+-- int reserverdWord = 5;
+-- bad reserve words (i.e. wrong capitalization)
