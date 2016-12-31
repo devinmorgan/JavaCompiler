@@ -17,7 +17,6 @@ boolean
 null
 for
 return
-IO.printString
-IO.printInt
-IO.readInt
-IO.readLine
+print
+readInt
+readLine

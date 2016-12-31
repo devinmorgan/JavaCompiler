@@ -1,5 +1,5 @@
 // make sure reserved words are case sensitive
 Void
 string
-IO.PrintString
+ReadLine
 New
