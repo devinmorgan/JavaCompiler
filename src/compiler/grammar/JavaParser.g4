@@ -1,17 +1,17 @@
-parser grammar JavaParser;
+parser java.compiler.grammar JavaParser;
 
 
 options
 {
    language = 'Java';
-   tokenVocab = 'JavaScanner';
+   tokenVocab = 'src/java.compiler.grammar/JavaScanner';
    superClass = 'Parser'; //class JavaParser extends Parser;
    //buildAST = true;
 }
 
 
 @parser::header {
-//   package src.grammer;
+    package compiler.grammar;
 }
 
 

@@ -1,4 +1,4 @@
-lexer grammar JavaScanner;
+lexer java.compiler.grammar JavaScanner;
 
 options
 {
@@ -7,7 +7,7 @@ options
 }
 
 @lexer::header {
-    package grammar;
+    package compiler.grammar;
 }
 
 // Selectively turns on debug tracing mode.
