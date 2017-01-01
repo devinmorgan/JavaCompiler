@@ -1,0 +1,6 @@
+// illegal nested assignment
+void main() {
+    int x, y;
+    x = 5;
+    y = 6 + x = 1; // missing parenthesis around x = 1
+}
