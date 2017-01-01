@@ -1,14 +1,8 @@
-import grammar.scanner.JavaScanner;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.PrintStream;
-import java.util.ArrayList;
+import autogen.src.grammar.*;
+import java.io.*;
 import java.util.BitSet;
 
 
@@ -91,6 +85,84 @@ class Main {
         }
         System.out.println("Passed " + passedTestsCount + "/" + numTests + " scanner tests\n");
         System.out.println(testData);
+    }
+
+    private static void runParserTests() {
+        String scannerTestsInputDirectory = "tests/scanner/input/";
+        File root = new File(scannerTestsInputDirectory);
+        File[] files = root.listFiles(new NoHiddenFilesFilter());
+
+        StringBuilder testData = new StringBuilder();
+        int numTests = files.length;
+        int passedTestsCount = 0;
+
+        for (File file : files) {
+            try {
+                CharStream stream = new ANTLRFileStream(file.getPath());
+                JavaScanner scanner = new JavaScanner(stream);
+                StringBuilder outputBuilder = new StringBuilder();
+                CommonTokenStream tokenStream = new CommonTokenStream(scanner); // added for Antlr4
+                DecafParser parser = new DecafParser(tokenStream);
+
+                // Semantic/token recognition error capture mechanism
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                PrintStream p = new PrintStream(bytes, true, "UTF-8");
+                System.setErr(p);
+
+                parser.setTrace(CLI.debug);
+                parser.program();
+                String printedSoFar = bytes.toString("UTF-8");
+                System.out.print(printedSoFar);
+
+                if (parser.getNumberOfSyntaxErrors() > 0 || printedSoFar.length() > 0) {
+                    System.exit(1);
+                }
+
+//                System.out.println(outputBuilder.toString()); // uncomment to debug
+
+                // load the expected output file
+                String scannerTestsOutputDirectory = "tests/scanner/output/";
+                String scannerTestExtension = ".out";
+                StringBuilder expectedOuput
+                        = Main.readFile(scannerTestsOutputDirectory + file.getName() + scannerTestExtension);
+
+                // compare the actual output with the expected output
+                boolean passTest = outputBuilder.toString().equals(expectedOuput.toString());
+                if (passTest) {
+                    passedTestsCount++;
+                }
+                else {
+                    testData.append("Testing " + file.getPath() + ":\n");
+                    testData.append("Failed.\n");
+                    testData.append(outputBuilder);
+                    testData.append("\n");
+                    testData.append(expectedOuput);
+                    testData.append("\n\n");
+                }
+            }
+            catch (IOException e) {
+                System.err.println("There was an error: " + file.toString() + " " + e);
+                System.exit(1);
+            }
+        }
+        System.out.println("Passed " + passedTestsCount + "/" + numTests + " scanner tests\n");
+        System.out.println(testData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public static void main(String[] args) {

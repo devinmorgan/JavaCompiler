@@ -11,7 +11,7 @@ options
 
 
 @parser::header {
-   package grammer;
+//   package src.grammer;
 }
 
 
