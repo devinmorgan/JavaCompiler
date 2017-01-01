@@ -7,7 +7,7 @@ options
 }
 
 @lexer::header {
-    package grammar.scanner;
+    package grammar;
 }
 
 // Selectively turns on debug tracing mode.
