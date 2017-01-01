@@ -1,4 +1,4 @@
-lexer java.compiler.grammar JavaScanner;
+lexer grammar JavaScanner;
 
 options
 {
