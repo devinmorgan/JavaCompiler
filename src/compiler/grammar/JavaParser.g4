@@ -109,7 +109,7 @@ method_sig
 ;
 
 stmt_block
-    : L_PAREN (var_decl | stmt)* R_CURL
+    : L_CURL (var_decl | stmt)* R_CURL
 ;
 
 stmt
@@ -130,9 +130,6 @@ else_stmt
 
 expr
     : L_PAREN expr R_PAREN #ParenthExpr
-    | ID AS_OP expr #VarAssignExpr
-    | expr DOT ID #PropAssignExpr
-    | expr L_SQUARE expr R_SQUARE #ArrayAssignExpr
     | SUB_OP expr #NegateExpr
     | NOT_OP expr #NotExpr
     | expr (MUL_OP | DIV_OP | MOD_OP) expr #MultiplicativeExpr
@@ -141,17 +138,20 @@ expr
     | expr (EQ_OP | NEQ_OP) expr #EqualityExpr
     | expr AND_OP expr #AndExpr
     | expr OR_OP expr #OrExpr
+    | ID AS_OP expr #VarAssignExpr
+    | expr DOT ID AS_OP expr #PropAssignExpr
+    | expr L_SQUARE expr R_SQUARE AS_OP expr #ArrayAssignExpr
     | literal #LiteralExpr
     | ID #VarAccessExpr
     | expr DOT ID #PropAccessExpr
     | expr L_SQUARE expr R_SQUARE #ArrayAccessStmt
     | RES_THIS #ThisExpr
-    | ID L_PAREN args R_PAREN #GlobalMethodCall
-    | expr DOT ID L_PAREN args R_PAREN #ObjectMethodCall
+    | ID L_PAREN args? R_PAREN #GlobalMethodCall
+    | expr DOT ID L_PAREN args? R_PAREN #ObjectMethodCall
     | RES_READ_INT L_PAREN R_PAREN #ReadIntExpr
     | RES_READ_LINE L_PAREN R_PAREN #ReadLineExpr
     | RES_NEW ID L_PAREN R_PAREN #NewObjExpr
-    | RES_NEW (ID | type) L_SQUARE R_SQUARE #NewArrayExpr
+    | RES_NEW (ID | type) L_SQUARE expr R_SQUARE #NewArrayExpr
 ;
 
 args
