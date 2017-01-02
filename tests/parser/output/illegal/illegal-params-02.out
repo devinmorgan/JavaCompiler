@@ -1,0 +1,4 @@
+line 2:12 mismatched input ',' expecting ')'
+line 2:21 extraneous input 'boolean' expecting ID
+line 2:30 extraneous input ')' expecting {',', ';'}
+line 2:42 token recognition error at: '''

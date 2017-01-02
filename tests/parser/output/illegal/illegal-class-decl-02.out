@@ -1,0 +1,2 @@
+line 2:24 extraneous input 'extends' expecting {'{', ','}
+line 2:38 extraneous input '/' expecting {<EOF>, 'void', 'String', 'int', 'class', 'interface', 'boolean', ID}
