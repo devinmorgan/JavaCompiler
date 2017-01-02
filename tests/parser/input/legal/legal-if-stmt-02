@@ -6,5 +6,5 @@ int g() {
         return goodbye;
 
     if (!false) { }
-    else { print("hello") }
+    else { print("hello"); }
 }
