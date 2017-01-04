@@ -1,0 +1,10 @@
+// foo() isn't guaranteed to return a value for each path
+int foo() {
+    if (true) {
+        return 1;
+    }
+    else {
+
+    }
+}
+void main () { }

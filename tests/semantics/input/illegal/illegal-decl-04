@@ -1,0 +1,3 @@
+int j;
+void main() { }
+int j; // can't re-declare j in same scope

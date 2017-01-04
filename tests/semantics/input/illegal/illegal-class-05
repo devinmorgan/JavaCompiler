@@ -1,0 +1,3 @@
+// class A doesn't exist
+class B extends A { }
+void main() { }

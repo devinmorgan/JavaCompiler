@@ -1,0 +1,8 @@
+// param numbers of function call msut match function signature
+int foo() {
+    return 1;
+}
+void main() {
+    int i;
+    i = foo(true, "hello"); // foo() doesn't have any arguments
+}

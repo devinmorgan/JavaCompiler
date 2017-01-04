@@ -1,0 +1,5 @@
+// foo() doesn't return anything
+int foo() {
+
+}
+void main() { }

@@ -1,0 +1,4 @@
+// class A was never declared!
+void main() {
+    A a; a = new A();
+}

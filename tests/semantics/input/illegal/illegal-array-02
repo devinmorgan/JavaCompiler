@@ -1,0 +1,5 @@
+// array accesses must evaluate to int
+void main() {
+    int[] test; test = new int[5];
+    test[true] = 7; // cannot access of type boolean
+}

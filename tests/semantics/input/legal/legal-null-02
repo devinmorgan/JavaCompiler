@@ -1,0 +1,12 @@
+// null is a valid return value for objects
+
+String foo() { return null; }
+int[] bar() { return null; }
+class A { }
+A foobar() { return null; }
+
+void main() {
+    String s; s = foo();
+    int[] array; array = bar();
+    A a; a = foobar();
+}

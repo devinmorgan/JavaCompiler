@@ -1,0 +1,3 @@
+// foo()'s return value and signature don't match
+void foo() { return 1;}
+void main() { }

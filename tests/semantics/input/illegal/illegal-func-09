@@ -1,0 +1,11 @@
+// foo() return type and signature don't match
+int foo() {
+    if (true) { return 1}
+    else {
+        if (true) return 1;
+        else {
+            return true; // foo can only return an int!
+        }
+    }
+}
+void main() { }

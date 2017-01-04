@@ -1,0 +1,10 @@
+// you cannot access a class . property from a different class
+class A {
+    int i;
+}
+class B {
+    int foo(A a) {
+        return a.i;
+    }
+}
+void main() { }

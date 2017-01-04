@@ -1,0 +1,5 @@
+class A {}
+void main() {
+    A test; test = new A();
+    test = 7; // can't re-assign variable to different type
+}

@@ -1,0 +1,3 @@
+void main() {
+    // this is valid since it includes a main
+}

@@ -1,0 +1,9 @@
+// cannot access . property outside of a class
+class A {
+    int i;
+}
+
+void main() {
+    int i;
+    i = (new A()).i;
+}

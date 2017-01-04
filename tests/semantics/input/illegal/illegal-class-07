@@ -1,0 +1,10 @@
+// illegal use of class method
+class A {
+    int foo() {
+        return 1;
+    }
+}
+void main() {
+    A a; a = new A();
+    a.foo() = 5; // not a legal thing to do lol
+}

@@ -1,0 +1,5 @@
+int j;
+void main() {
+    j = 5;
+    k = 4; // k was never declared
+}

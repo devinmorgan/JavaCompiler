@@ -1,0 +1,5 @@
+void main() {
+    int x;
+    x = 5;
+    x = true; // can't re-assigne variable to different type;
+}

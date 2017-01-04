@@ -1,0 +1,5 @@
+// ctrl must take booleans
+
+void main() {
+    if (5) { }
+}

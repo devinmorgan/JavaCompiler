@@ -1,0 +1,2 @@
+void main() { } // main method can come first
+void foo() { }

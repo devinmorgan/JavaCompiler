@@ -1,0 +1,5 @@
+// all functiosn must be declared be used
+foo(int i) {
+    return fakeFunction(i);
+}
+void main() { }

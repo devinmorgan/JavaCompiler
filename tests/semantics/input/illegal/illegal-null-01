@@ -1,0 +1,4 @@
+// primitives cannot be set to null
+void main() {
+    int i; i =null;
+}

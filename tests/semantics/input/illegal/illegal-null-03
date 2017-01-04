@@ -1,0 +1,5 @@
+// null is not compatible with primitives
+int foo() {
+    return null;
+}
+void main() { }

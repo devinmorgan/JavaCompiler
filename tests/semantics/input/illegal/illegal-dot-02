@@ -1,0 +1,8 @@
+// cannot do obj.property outside of a class
+class A {
+    int i;
+}
+
+void main() {
+    (new A()).i = 5;
+}

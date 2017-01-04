@@ -1,0 +1,10 @@
+// can only call methods that have been declared within A
+class A {
+    int foo() {
+        return 1;
+    }
+}
+void main() {
+    A a; a = new A();
+    int i; i = a.bar(); // bar() is not a method of A
+}

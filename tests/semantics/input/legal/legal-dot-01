@@ -1,0 +1,11 @@
+// legal uses of . method()
+class A {
+    int foo() { return 1; }
+}
+void main() {
+    int i; i = (new A()).foo();
+
+    A a; a = new A();
+
+    int j; j = a.foo();
+}

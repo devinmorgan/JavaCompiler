@@ -1,0 +1,10 @@
+// class fields can be accessed with and without this
+class A {
+    int i;
+
+    void init() {
+        i = 5;
+        this.i = 6;
+    }
+}
+void main() { }

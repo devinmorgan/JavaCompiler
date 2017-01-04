@@ -1,0 +1,16 @@
+// Valid! foo() is guaranteed to return an int
+int foo() {
+    if (true) {
+        if (true) {
+            // no return
+        }
+        else {
+            return 1;
+        }
+    }
+    else {
+        return 1;
+    }
+
+    return 1; // but that's okay because it returns here!!
+}

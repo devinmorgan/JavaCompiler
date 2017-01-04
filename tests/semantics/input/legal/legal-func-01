@@ -1,0 +1,7 @@
+int foo() { return 1;}
+void foo(int i) { return 1;} // this is method overlaoding
+voie main( ){
+    int i,j;
+     i = foo():
+     j = foo(i); // this is allowed!
+}

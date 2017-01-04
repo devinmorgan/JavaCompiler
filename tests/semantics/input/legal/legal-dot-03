@@ -1,0 +1,8 @@
+class Number {
+    int num;
+
+    int add(Number n) {
+        return this.num + n.num;
+    }
+}
+void main() { }
