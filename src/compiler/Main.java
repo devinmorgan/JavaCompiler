@@ -6,8 +6,6 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.BitSet;
 
 
@@ -18,7 +16,6 @@ import java.util.BitSet;
 
 
 class Main {
-
     private static void runScannerTests() {
         System.out.print("Running scanner tests...\n");
         String scannerTestsInputDirectory = "tests/scanner/input/";
