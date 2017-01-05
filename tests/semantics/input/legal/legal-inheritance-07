@@ -1,0 +1,11 @@
+/* Since init init(int a) is an overloaded vesion
+   of void init(), B is not doing anything illegal */
+class A {
+    void init() { }
+}
+class B extends A {
+    int init(int a) {
+        return a;
+    }
+}
+void main() {}

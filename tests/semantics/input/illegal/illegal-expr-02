@@ -1,0 +1,5 @@
+// can't add int and booleans
+void main() {
+    int x;
+    x = 5 + true;
+}

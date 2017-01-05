@@ -1,0 +1,6 @@
+void main() {
+    int[] test;
+    test = new int[4];
+    int i;
+    i = 5 + (test[0] = 2);
+}

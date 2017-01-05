@@ -1,0 +1,6 @@
+// only store locations can exist in the
+// left-hand side of assign operator
+void main() {
+    int x;
+    x = 5 + (5 = y);
+}

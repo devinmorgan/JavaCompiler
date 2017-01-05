@@ -1,0 +1,13 @@
+// A can't be used as an I because it does not explicitly
+// state that it implements I
+interface I {
+    int return1() {
+        return 1;
+    }
+}
+class A {
+    return 1;
+}
+void main() {
+    I test; test = new A(); // A is not decalred as type I
+}

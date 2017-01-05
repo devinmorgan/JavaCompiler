@@ -1,0 +1,9 @@
+// store locations must exist on the left side of the assign operator
+class A {
+    int i;
+    void init() {
+        int j;
+        j = 5 + (this.i = 2);
+    }
+}
+void main() { }

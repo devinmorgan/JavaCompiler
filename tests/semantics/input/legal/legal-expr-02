@@ -1,0 +1,7 @@
+// relations take precedence of boolean so the
+// expression should evaluate to a boolean
+void main() {
+    boolean b;
+    b = 5 < 3 || true;
+    b = 7 >= 9 && 5 < 3;
+}

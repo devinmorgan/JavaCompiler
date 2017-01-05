@@ -1,0 +1,5 @@
+// argument of - must be an integer
+void main() {
+    boolean b;
+    b= -!true;
+}

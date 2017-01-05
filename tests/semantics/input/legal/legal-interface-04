@@ -1,0 +1,8 @@
+// since A is of type I, I[] be be assigned to A[]. They will be treated as
+// I's of course
+class A implements I {}
+interface I {}
+void main() {
+    I[] array;
+    array = new A[5]; // valid! 
+}

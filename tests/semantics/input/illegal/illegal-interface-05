@@ -1,0 +1,7 @@
+// A must implement all of I's methods exactly
+class A extends I {
+    void init(boolean i) { } // arguments don't match
+}
+interface I {
+    void init(int i);
+}

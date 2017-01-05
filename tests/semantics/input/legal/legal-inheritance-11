@@ -1,0 +1,9 @@
+class A {
+    void foo() { }
+}
+class B extends A { }
+void main() {
+    A[] test;
+    test = new B[4];
+    test[0].init();
+}

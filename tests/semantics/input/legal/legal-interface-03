@@ -1,0 +1,7 @@
+// A can stand in place for an I since A implements I
+class A implements I { }
+interface I {}
+void main() {
+    I test;
+    test = new A(); // valid!
+}

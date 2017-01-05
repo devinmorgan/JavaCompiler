@@ -1,0 +1,11 @@
+// since C descends from A, it cannot override init() with a new return Type
+class A {
+    void init() { }
+}
+class B extends A {
+
+}
+class C extends B {
+    int init() { }
+}
+void main() { }

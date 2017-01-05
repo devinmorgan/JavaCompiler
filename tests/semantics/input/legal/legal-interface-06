@@ -1,0 +1,11 @@
+// B[] can stand in place of I[] because B inherits
+// from A, which implements I
+class A implements I { }
+class B extends A { }
+interface I { }
+
+I[] foo() {
+    return new B[5];
+}
+
+void main() { }

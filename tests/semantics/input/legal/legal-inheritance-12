@@ -1,0 +1,10 @@
+/*  since B is technically different than A, 
+    this is legal instance of method overriding
+*/
+class A {
+    void init(A a) { }
+}
+class B extends A {
+    void init(B a) { }
+}
+void main() { }

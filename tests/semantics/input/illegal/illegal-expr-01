@@ -1,0 +1,5 @@
+// ints are not booleans!
+void main() {
+    boolean b;
+    b = 5;
+}

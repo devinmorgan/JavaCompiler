@@ -1,0 +1,11 @@
+// B (child) has access to A's (parent's) fields
+class A {
+    int i;
+}
+class B extends A {
+    int j;
+    int foo() {
+        return this.j + this.i;
+    }
+}
+void main() { }
