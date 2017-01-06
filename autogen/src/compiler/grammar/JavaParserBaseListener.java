@@ -282,6 +282,18 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBoolLiteralExpr(JavaParser.BoolLiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBoolLiteralExpr(JavaParser.BoolLiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAndExpr(JavaParser.AndExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -289,6 +301,18 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAndExpr(JavaParser.AndExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjectProperty(JavaParser.ObjectPropertyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjectProperty(JavaParser.ObjectPropertyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -342,13 +366,25 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPropAccessExpr(JavaParser.PropAccessExprContext ctx) { }
+	@Override public void enterArrayAccessExpr(JavaParser.ArrayAccessExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPropAccessExpr(JavaParser.PropAccessExprContext ctx) { }
+	@Override public void exitArrayAccessExpr(JavaParser.ArrayAccessExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStringLiteralExpr(JavaParser.StringLiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStringLiteralExpr(JavaParser.StringLiteralExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -390,13 +426,13 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPropAssignExpr(JavaParser.PropAssignExprContext ctx) { }
+	@Override public void enterAssignExpr(JavaParser.AssignExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPropAssignExpr(JavaParser.PropAssignExprContext ctx) { }
+	@Override public void exitAssignExpr(JavaParser.AssignExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -409,6 +445,18 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitReadIntExpr(JavaParser.ReadIntExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNullLiteralExpr(JavaParser.NullLiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNullLiteralExpr(JavaParser.NullLiteralExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -433,6 +481,18 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitObjectMethodCall(JavaParser.ObjectMethodCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIntLiteralExpr(JavaParser.IntLiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIntLiteralExpr(JavaParser.IntLiteralExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -486,18 +546,6 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteralExpr(JavaParser.LiteralExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLiteralExpr(JavaParser.LiteralExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterNotExpr(JavaParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -505,30 +553,6 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNotExpr(JavaParser.NotExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArrayAssignExpr(JavaParser.ArrayAssignExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArrayAssignExpr(JavaParser.ArrayAssignExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVarAssignExpr(JavaParser.VarAssignExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVarAssignExpr(JavaParser.VarAssignExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -546,13 +570,25 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayAccessStmt(JavaParser.ArrayAccessStmtContext ctx) { }
+	@Override public void enterMethod_call(JavaParser.Method_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayAccessStmt(JavaParser.ArrayAccessStmtContext ctx) { }
+	@Override public void exitMethod_call(JavaParser.Method_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray_call(JavaParser.Array_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray_call(JavaParser.Array_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -565,18 +601,6 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArgs(JavaParser.ArgsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLiteral(JavaParser.LiteralContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLiteral(JavaParser.LiteralContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -252,6 +252,18 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitElse_stmt(JavaParser.Else_stmtContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code BoolLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolLiteralExpr(JavaParser.BoolLiteralExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BoolLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolLiteralExpr(JavaParser.BoolLiteralExprContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code AndExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
 	 * @param ctx the parse tree
@@ -263,6 +275,18 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAndExpr(JavaParser.AndExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ObjectProperty}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectProperty(JavaParser.ObjectPropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ObjectProperty}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectProperty(JavaParser.ObjectPropertyContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ReadLineExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
@@ -312,17 +336,29 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitNewObjExpr(JavaParser.NewObjExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code PropAccessExpr}
+	 * Enter a parse tree produced by the {@code ArrayAccessExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterPropAccessExpr(JavaParser.PropAccessExprContext ctx);
+	void enterArrayAccessExpr(JavaParser.ArrayAccessExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code PropAccessExpr}
+	 * Exit a parse tree produced by the {@code ArrayAccessExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitPropAccessExpr(JavaParser.PropAccessExprContext ctx);
+	void exitArrayAccessExpr(JavaParser.ArrayAccessExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringLiteralExpr(JavaParser.StringLiteralExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringLiteralExpr(JavaParser.StringLiteralExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code RelationalExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
@@ -360,17 +396,17 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitNegateExpr(JavaParser.NegateExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code PropAssignExpr}
+	 * Enter a parse tree produced by the {@code AssignExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterPropAssignExpr(JavaParser.PropAssignExprContext ctx);
+	void enterAssignExpr(JavaParser.AssignExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code PropAssignExpr}
+	 * Exit a parse tree produced by the {@code AssignExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitPropAssignExpr(JavaParser.PropAssignExprContext ctx);
+	void exitAssignExpr(JavaParser.AssignExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ReadIntExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
@@ -383,6 +419,18 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitReadIntExpr(JavaParser.ReadIntExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NullLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNullLiteralExpr(JavaParser.NullLiteralExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NullLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNullLiteralExpr(JavaParser.NullLiteralExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code MultiplicativeExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
@@ -407,6 +455,18 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitObjectMethodCall(JavaParser.ObjectMethodCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IntLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntLiteralExpr(JavaParser.IntLiteralExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IntLiteralExpr}
+	 * labeled alternative in {@link JavaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntLiteralExpr(JavaParser.IntLiteralExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code EqualityExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
@@ -456,18 +516,6 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitGlobalMethodCall(JavaParser.GlobalMethodCallContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code LiteralExpr}
-	 * labeled alternative in {@link JavaParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterLiteralExpr(JavaParser.LiteralExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code LiteralExpr}
-	 * labeled alternative in {@link JavaParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitLiteralExpr(JavaParser.LiteralExprContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code NotExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
 	 * @param ctx the parse tree
@@ -479,30 +527,6 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNotExpr(JavaParser.NotExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ArrayAssignExpr}
-	 * labeled alternative in {@link JavaParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayAssignExpr(JavaParser.ArrayAssignExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ArrayAssignExpr}
-	 * labeled alternative in {@link JavaParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayAssignExpr(JavaParser.ArrayAssignExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code VarAssignExpr}
-	 * labeled alternative in {@link JavaParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterVarAssignExpr(JavaParser.VarAssignExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code VarAssignExpr}
-	 * labeled alternative in {@link JavaParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitVarAssignExpr(JavaParser.VarAssignExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ThisExpr}
 	 * labeled alternative in {@link JavaParser#expr}.
@@ -516,17 +540,25 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitThisExpr(JavaParser.ThisExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ArrayAccessStmt}
-	 * labeled alternative in {@link JavaParser#expr}.
+	 * Enter a parse tree produced by {@link JavaParser#method_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterArrayAccessStmt(JavaParser.ArrayAccessStmtContext ctx);
+	void enterMethod_call(JavaParser.Method_callContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ArrayAccessStmt}
-	 * labeled alternative in {@link JavaParser#expr}.
+	 * Exit a parse tree produced by {@link JavaParser#method_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitArrayAccessStmt(JavaParser.ArrayAccessStmtContext ctx);
+	void exitMethod_call(JavaParser.Method_callContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#array_call}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray_call(JavaParser.Array_callContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#array_call}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray_call(JavaParser.Array_callContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#args}.
 	 * @param ctx the parse tree
@@ -537,14 +569,4 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArgs(JavaParser.ArgsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JavaParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void enterLiteral(JavaParser.LiteralContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JavaParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void exitLiteral(JavaParser.LiteralContext ctx);
 }
