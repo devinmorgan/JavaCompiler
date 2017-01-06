@@ -114,12 +114,14 @@ stmt_block
 
 stmt
     : expr SEMI_COL #ExprStmt
-    | RES_IF L_PAREN expr R_PAREN stmt else_stmt? #IfStmt
+    | RES_IF L_PAREN expr R_PAREN stmt else_stmt #IfElseStmt
+    | RES_IF L_PAREN expr R_PAREN stmt #IfStmt
     | RES_WHILE L_PAREN expr R_PAREN stmt #WhileStmt
     | RES_FOR L_PAREN expr? SEMI_COL expr SEMI_COL expr? R_PAREN stmt #ForStmt
     | RES_BREAK SEMI_COL #BreakStmt
     | RES_CONTINUE SEMI_COL #ContinueStmt
-    | RES_RETURN expr? SEMI_COL #ReturnStmt
+    | RES_RETURN expr SEMI_COL #NonVoidReturnStmt
+    | RES_RETURN SEMI_COL #VoidReturnStmt
     | RES_PRINT L_PAREN expr R_PAREN SEMI_COL #PrintStmt
     | stmt_block #CodeBlock
 ;
