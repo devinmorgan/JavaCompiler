@@ -1,0 +1,4 @@
+void main(){
+    Obj a; a = new Obj();
+    a.someMethod().someProperty.someOtherMethod();
+}

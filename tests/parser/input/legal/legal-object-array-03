@@ -1,0 +1,4 @@
+// valid for some method that returns a 2 dimensional array
+void main() {
+    obj.getArray()[0][0] = 4;
+}

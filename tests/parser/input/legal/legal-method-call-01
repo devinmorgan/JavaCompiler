@@ -1,0 +1,4 @@
+// legal method call
+void main() {
+    x = sampleMethod(true || false && true, 5*7+x, (new int[5][5]), obj.getMethod());
+}

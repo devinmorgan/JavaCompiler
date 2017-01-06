@@ -1,0 +1,5 @@
+// valid multi-dimensional array test
+void main() {
+    int[][][] test;
+    test = new int[10][9][8];
+}

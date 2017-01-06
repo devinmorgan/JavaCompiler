@@ -1,0 +1,4 @@
+// a legal chaining
+void main() {
+    (new Obj()).testMethod().testMethod().property;
+}
