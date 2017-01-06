@@ -200,6 +200,8 @@ class Main {
         Main.runParserTests();
     }
 
+
+
     private static class ScannerErrorListener implements ANTLRErrorListener {
 
         private StringBuilder stringBuilder;
