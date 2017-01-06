@@ -150,6 +150,18 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIfElseStmt(JavaParser.IfElseStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfElseStmt(JavaParser.IfElseStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIfStmt(JavaParser.IfStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -210,13 +222,25 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturnStmt(JavaParser.ReturnStmtContext ctx) { }
+	@Override public void enterNonVoidReturnStmt(JavaParser.NonVoidReturnStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturnStmt(JavaParser.ReturnStmtContext ctx) { }
+	@Override public void exitNonVoidReturnStmt(JavaParser.NonVoidReturnStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVoidReturnStmt(JavaParser.VoidReturnStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVoidReturnStmt(JavaParser.VoidReturnStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

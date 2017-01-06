@@ -122,6 +122,18 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitExprStmt(JavaParser.ExprStmtContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code IfElseStmt}
+	 * labeled alternative in {@link JavaParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfElseStmt(JavaParser.IfElseStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IfElseStmt}
+	 * labeled alternative in {@link JavaParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfElseStmt(JavaParser.IfElseStmtContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code IfStmt}
 	 * labeled alternative in {@link JavaParser#stmt}.
 	 * @param ctx the parse tree
@@ -182,17 +194,29 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitContinueStmt(JavaParser.ContinueStmtContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ReturnStmt}
+	 * Enter a parse tree produced by the {@code NonVoidReturnStmt}
 	 * labeled alternative in {@link JavaParser#stmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterReturnStmt(JavaParser.ReturnStmtContext ctx);
+	void enterNonVoidReturnStmt(JavaParser.NonVoidReturnStmtContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ReturnStmt}
+	 * Exit a parse tree produced by the {@code NonVoidReturnStmt}
 	 * labeled alternative in {@link JavaParser#stmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitReturnStmt(JavaParser.ReturnStmtContext ctx);
+	void exitNonVoidReturnStmt(JavaParser.NonVoidReturnStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code VoidReturnStmt}
+	 * labeled alternative in {@link JavaParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterVoidReturnStmt(JavaParser.VoidReturnStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code VoidReturnStmt}
+	 * labeled alternative in {@link JavaParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitVoidReturnStmt(JavaParser.VoidReturnStmtContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code PrintStmt}
 	 * labeled alternative in {@link JavaParser#stmt}.
