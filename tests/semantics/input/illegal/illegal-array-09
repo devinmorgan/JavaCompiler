@@ -1,0 +1,7 @@
+// illegal assignment of array to integer (note the array has 3 dimensions)
+int[][][] return3dArray() {
+    return new int[0][0][0];
+}
+void main() {
+    return3dArray()[0][0] = 5;
+}

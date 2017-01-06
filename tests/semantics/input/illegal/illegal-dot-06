@@ -1,0 +1,18 @@
+// illegal chaining of methods. Can't call getNext()
+// after getOne() since getOne() returns an int
+class Node {
+    Node next;
+
+    Node getNext() {
+        return next;
+    }
+
+    int getOne() {
+        return 1;
+    }
+}
+void main() {
+    Node a;
+    a = new Node();
+    a.getNext().getOne().getNext(); // last getNext() is illegal!
+}

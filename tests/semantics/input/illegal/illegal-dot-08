@@ -1,0 +1,10 @@
+// only Objects can have their properties accessed
+void main() {
+    int x;
+    x = 5.5;
+    boolean y;
+    y = true.true;
+    String s;
+    s = "hello"."world";
+    null.null;
+}

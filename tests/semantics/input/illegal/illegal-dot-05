@@ -1,0 +1,7 @@
+// only declared objects can have properties. This
+// just wouldn't make any sense
+void main() {
+    "hello".property = 5;
+    5.property = 6;
+    null.property = 7;
+}

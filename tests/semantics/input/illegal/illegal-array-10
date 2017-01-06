@@ -1,0 +1,5 @@
+// arguments for array size must be of type int
+void main() {
+    int[][][] test;
+    test = new int[10][10][true];
+}

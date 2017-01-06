@@ -1,0 +1,26 @@
+// it is legal chain methods
+class Node {
+    Node next;
+
+    Node getNext() {
+        return this.next;
+    }
+
+    void setNext(Node next) {
+        this.next = next;
+    }
+}
+void main() {
+    Node a,b,c,d;
+    a = new Node();
+    b = new Node();
+    c = new Node();
+    d = new Node();
+    a.setNext(b);
+    b.setNext(c);
+    c.setNext(d);
+
+    boolean isSameNode;
+    b = d == a.getNext().getNext().getNext();
+    print(b); // should be true
+}
