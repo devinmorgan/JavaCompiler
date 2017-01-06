@@ -140,29 +140,31 @@ expr
     | expr (EQ_OP | NEQ_OP) expr #EqualityExpr
     | expr AND_OP expr #AndExpr
     | expr OR_OP expr #OrExpr
-    | ID AS_OP expr #VarAssignExpr
-    | expr DOT ID AS_OP expr #PropAssignExpr
-    | expr L_SQUARE expr R_SQUARE AS_OP expr #ArrayAssignExpr
-    | literal #LiteralExpr
-    | ID #VarAccessExpr
-    | expr DOT ID #PropAccessExpr
-    | expr L_SQUARE expr R_SQUARE #ArrayAccessStmt
+    | expr AS_OP expr #AssignExpr
+    | expr DOT expr #ObjectProperty
+    | expr array_call #ArrayAccessExpr
     | RES_THIS #ThisExpr
-    | ID L_PAREN args? R_PAREN #GlobalMethodCall
-    | expr DOT ID L_PAREN args? R_PAREN #ObjectMethodCall
+    | expr DOT method_call #ObjectMethodCall
+    | method_call #GlobalMethodCall
+    | RES_NEW (ID | RES_INT | RES_BOOLEAN | RES_STRING) array_call #NewArrayExpr
     | RES_READ_INT L_PAREN R_PAREN #ReadIntExpr
     | RES_READ_LINE L_PAREN R_PAREN #ReadLineExpr
     | RES_NEW ID L_PAREN R_PAREN #NewObjExpr
-    | RES_NEW (ID | type) L_SQUARE expr R_SQUARE #NewArrayExpr
+    | ID #VarAccessExpr
+    | BOOL #BoolLiteralExpr
+    | STRING #StringLiteralExpr
+    | INT #IntLiteralExpr
+    | RES_NULL #NullLiteralExpr
+;
+
+method_call
+    : ID L_PAREN args? R_PAREN
+;
+
+array_call
+    : (L_SQUARE expr R_SQUARE)+
 ;
 
 args
     : expr (COMMA expr)*
-;
-
-literal
-    : BOOL
-    | STRING
-    | INT
-    | RES_NULL
 ;
