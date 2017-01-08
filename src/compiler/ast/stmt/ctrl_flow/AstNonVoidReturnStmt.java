@@ -8,4 +8,9 @@ import compiler.ast.stmt.AstStmt;
  */
 public class AstNonVoidReturnStmt extends AstStmt {
     final AstExpr returnValue;
+
+    public AstNonVoidReturnStmt(int line, int col, AstExpr returnValue) {
+        super(line, col);
+        this.returnValue = returnValue;
+    }
 }

@@ -7,4 +7,9 @@ import compiler.ast.expr.AstExpr;
  */
 public class AstNewObjectExpr extends AstExpr {
     final String className;
+
+    public AstNewObjectExpr(int line, int col, String className) {
+        super(line, col);
+        this.className = className;
+    }
 }

@@ -7,4 +7,9 @@ import compiler.ast.expr.AstExpr;
  */
 public abstract class AstUnaryExpr extends AstExpr{
     final AstExpr arg;
+
+    public AstUnaryExpr(int line, int col, AstExpr arg) {
+        super(line, col);
+        this.arg = arg;
+    }
 }

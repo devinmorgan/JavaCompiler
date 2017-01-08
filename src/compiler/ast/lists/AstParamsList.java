@@ -10,4 +10,9 @@ import java.util.ArrayList;
  */
 public class AstParamsList extends Ast {
     final ArrayList<AstParam> paramsList;
+
+    public AstParamsList(int line, int col, ArrayList<AstParam> paramsList) {
+        super(line, col);
+        this.paramsList = paramsList;
+    }
 }

@@ -5,4 +5,9 @@ package compiler.ast.expr;
  */
 public class AstParentheticalExpr extends AstExpr {
     final AstExpr value;
+
+    public AstParentheticalExpr(int line, int col, AstExpr value) {
+        super(line, col);
+        this.value = value;
+    }
 }

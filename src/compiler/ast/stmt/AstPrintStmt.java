@@ -8,4 +8,9 @@ import compiler.ast.stmt.AstStmt;
  */
 public class AstPrintStmt extends AstStmt{
     final AstExpr arg;
+
+    public AstPrintStmt(int line, int col, AstExpr arg) {
+        super(line, col);
+        this.arg = arg;
+    }
 }

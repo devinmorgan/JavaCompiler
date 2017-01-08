@@ -5,10 +5,10 @@ package compiler.ast;
  */
 public abstract class Ast {
     final int line;
-    final int column;
+    final int col;
 
-    Ast(int line, int column) {
+    public Ast(int line, int col) {
         this.line = line;
-        this.column = column;
+        this.col = col;
     }
 }

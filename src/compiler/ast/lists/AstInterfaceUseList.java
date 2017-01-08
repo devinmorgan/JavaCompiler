@@ -10,4 +10,9 @@ import java.util.ArrayList;
  */
 public class AstInterfaceUseList extends Ast {
     final ArrayList<AstInterfaceUse> interfacesList;
+
+    public AstInterfaceUseList(int line, int col, ArrayList<AstInterfaceUse> interfacesList) {
+        super(line, col);
+        this.interfacesList = interfacesList;
+    }
 }

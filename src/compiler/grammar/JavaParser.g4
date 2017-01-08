@@ -80,11 +80,15 @@ var_decl
 ;
 
 type
-    : RES_INT
+    : (RES_INT | RES_BOOLEAN | RES_STRING | ID) array_unit+
+    | RES_INT
     | RES_BOOLEAN
     | RES_STRING
     | ID
-    | type L_SQUARE R_SQUARE
+;
+
+array_unit
+    : L_SQUARE R_SQUARE
 ;
 
 func_decl
@@ -96,14 +100,14 @@ params
 ;
 
 class_decl
-    : RES_CLASS ID parent_class? interfaces? L_CURL (var_decl | func_decl)* R_CURL
+    : RES_CLASS ID parent_class? interface_use? L_CURL (var_decl | func_decl)* R_CURL
 ;
 
 parent_class
     : RES_EXTENDS ID
 ;
 
-interfaces
+interface_use
     : RES_IMPLEMENTS ID (COMMA ID)*
 ;
 

@@ -7,4 +7,9 @@ import compiler.ast.expr.AstExpr;
  */
 public class AstVarLocation extends AstExpr {
     final String varName;
+
+    public AstVarLocation(int line, int col, String varName) {
+        super(line, col);
+        this.varName = varName;
+    }
 }

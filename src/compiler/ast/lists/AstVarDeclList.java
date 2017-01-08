@@ -12,4 +12,10 @@ public class AstVarDeclList extends Ast{
     final AstNonVoidType declType;
     final HashSet<String> varNames;
 
+    public  AstVarDeclList(int line, int col, AstNonVoidType declType, HashSet<String> varNames) {
+        super(line, col);
+        this.declType = declType;
+        this.varNames = varNames;
+    }
+
 }

@@ -9,4 +9,9 @@ import java.util.ArrayList;
  */
 public class AstStmtBlock extends AstStmt {
     final ArrayList<Ast> blockContents;
+
+    public AstStmtBlock(int line, int col, ArrayList<Ast> blockContents) {
+        super(line, col);
+        this.blockContents = blockContents;
+    }
 }

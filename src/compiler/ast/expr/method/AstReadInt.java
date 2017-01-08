@@ -8,5 +8,8 @@ import compiler.ast.type.AstType;
  * Created by devinmorgan on 1/7/17.
  */
 public class AstReadInt extends AstExpr {
-    final AstType type = new AstIntType();
+
+    public AstReadInt(int line, int col) {
+        super(line, col);
+    }
 }

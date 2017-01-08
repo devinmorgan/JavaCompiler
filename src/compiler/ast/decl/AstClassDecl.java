@@ -12,4 +12,16 @@ public class AstClassDecl extends AstDecl {
     String parentClass;
     AstInterfaceUseList implementedInterfaces;
     final ArrayList<AstDecl> declsList;
+
+    public AstClassDecl(int line, int col,
+                        String className,
+                        String parentClass,
+                        AstInterfaceUseList implementedInterfaces,
+                        ArrayList<AstDecl> declsList) {
+        super(line, col);
+        this.className = className;
+        this.parentClass = parentClass;
+        this.implementedInterfaces = implementedInterfaces;
+        this.declsList = declsList;
+    }
 }

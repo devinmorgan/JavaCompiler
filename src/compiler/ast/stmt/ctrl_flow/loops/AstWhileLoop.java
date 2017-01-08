@@ -9,4 +9,10 @@ import compiler.ast.stmt.AstStmt;
 public class AstWhileLoop extends AstStmt{
     final AstExpr condtion;
     final AstStmt whileBody;
+
+    public AstWhileLoop(int line, int col, AstExpr condtion, AstStmt whileBody) {
+        super(line, col);
+        this.condtion = condtion;
+        this.whileBody = whileBody;
+    }
 }

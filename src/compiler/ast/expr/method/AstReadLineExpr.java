@@ -8,5 +8,7 @@ import compiler.ast.type.AstType;
  * Created by devinmorgan on 1/7/17.
  */
 public class AstReadLineExpr extends AstExpr {
-    final AstType type = new AstStringType();
+    public AstReadLineExpr(int line, int col) {
+        super(line, col);
+    }
 }
