@@ -1,4 +1,4 @@
-package compiler.ast.decl;
+package compiler.ast.lists;
 
 import compiler.ast.Ast;
 import compiler.ast.type.AstNonVoidType;

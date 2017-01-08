@@ -1,4 +1,7 @@
-package compiler.ast;
+package compiler.ast.lists;
+
+import compiler.ast.Ast;
+import compiler.ast.AstParam;
 
 import java.util.ArrayList;
 
