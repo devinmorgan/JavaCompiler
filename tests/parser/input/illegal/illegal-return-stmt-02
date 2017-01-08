@@ -1,4 +1,4 @@
 // invalid ReturnStmt
 int anotherTest() {
-    return return;
+    return return 5;
 }

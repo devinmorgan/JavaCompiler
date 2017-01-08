@@ -1,2 +1,2 @@
 line 3:15 extraneous input ';' expecting {'(', '!', '-', 'this', 'readInt', 'new', 'readLine', 'null', BOOL, STRING, INT, ID}
-line 3:25 mismatched input ')' expecting {'[', ';', '.', '<', '>', '<=', '>=', '==', '!=', '&&', '||', '+', '-', '*', '/', '%'}
+line 3:25 mismatched input ')' expecting {'[', ';', '.', '<', '>', '<=', '>=', '==', '!=', '&&', '||', '+', '-', '*', '/', '%', '='}
