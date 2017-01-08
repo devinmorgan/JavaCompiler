@@ -102,6 +102,30 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterParent_class(JavaParser.Parent_classContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParent_class(JavaParser.Parent_classContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInterfaces(JavaParser.InterfacesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInterfaces(JavaParser.InterfacesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInterface_decl(JavaParser.Interface_declContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -582,13 +606,13 @@ public class JavaParserBaseListener implements JavaParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArray_call(JavaParser.Array_callContext ctx) { }
+	@Override public void enterArray_struct(JavaParser.Array_structContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArray_call(JavaParser.Array_callContext ctx) { }
+	@Override public void exitArray_struct(JavaParser.Array_structContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

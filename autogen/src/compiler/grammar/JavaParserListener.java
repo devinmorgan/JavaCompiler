@@ -80,6 +80,26 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitClass_decl(JavaParser.Class_declContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#parent_class}.
+	 * @param ctx the parse tree
+	 */
+	void enterParent_class(JavaParser.Parent_classContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#parent_class}.
+	 * @param ctx the parse tree
+	 */
+	void exitParent_class(JavaParser.Parent_classContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#interfaces}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaces(JavaParser.InterfacesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#interfaces}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaces(JavaParser.InterfacesContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#interface_decl}.
 	 * @param ctx the parse tree
 	 */
@@ -550,15 +570,15 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitMethod_call(JavaParser.Method_callContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JavaParser#array_call}.
+	 * Enter a parse tree produced by {@link JavaParser#array_struct}.
 	 * @param ctx the parse tree
 	 */
-	void enterArray_call(JavaParser.Array_callContext ctx);
+	void enterArray_struct(JavaParser.Array_structContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JavaParser#array_call}.
+	 * Exit a parse tree produced by {@link JavaParser#array_struct}.
 	 * @param ctx the parse tree
 	 */
-	void exitArray_call(JavaParser.Array_callContext ctx);
+	void exitArray_struct(JavaParser.Array_structContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#args}.
 	 * @param ctx the parse tree
