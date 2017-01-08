@@ -3,7 +3,7 @@ lexer grammar JavaScanner;
 options
 {
   language = 'Java';
-  superClass = 'Lexer'; //class DecafScanner extends Lexer;
+  superClass = 'Lexer'; //classes DecafScanner extends Lexer;
 }
 
 @lexer::header {

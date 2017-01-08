@@ -5,7 +5,7 @@ options
 {
    language = 'Java';
    tokenVocab = 'src/compiler/grammar/JavaScanner';
-   superClass = 'Parser'; //class JavaParser extends Parser;
+   superClass = 'Parser'; //classes JavaParser extends Parser;
    //buildAST = true;
 }
 
@@ -96,8 +96,15 @@ params
 ;
 
 class_decl
-    : RES_CLASS ID (RES_EXTENDS ID)? (RES_IMPLEMENTS ID (COMMA ID)*)?
-        L_CURL (var_decl | func_decl)* R_CURL
+    : RES_CLASS ID parent_class? interfaces? L_CURL (var_decl | func_decl)* R_CURL
+;
+
+parent_class
+    : RES_EXTENDS ID
+;
+
+interfaces
+    : RES_IMPLEMENTS ID (COMMA ID)*
 ;
 
 interface_decl
@@ -141,12 +148,12 @@ expr
     | expr AND_OP expr #AndExpr
     | expr OR_OP expr #OrExpr
     | expr AS_OP expr #AssignExpr
-    | expr DOT expr #ObjectProperty
-    | expr array_call #ArrayAccessExpr
-    | RES_THIS #ThisExpr
+    | expr array_struct #ArrayAccessExpr
     | expr DOT method_call #ObjectMethodCall
     | method_call #GlobalMethodCall
-    | RES_NEW (ID | RES_INT | RES_BOOLEAN | RES_STRING) array_call #NewArrayExpr
+    | expr DOT expr #ObjectProperty
+    | RES_THIS #ThisExpr
+    | RES_NEW (ID | RES_INT | RES_BOOLEAN | RES_STRING) array_struct #NewArrayExpr
     | RES_READ_INT L_PAREN R_PAREN #ReadIntExpr
     | RES_READ_LINE L_PAREN R_PAREN #ReadLineExpr
     | RES_NEW ID L_PAREN R_PAREN #NewObjExpr
@@ -161,7 +168,7 @@ method_call
     : ID L_PAREN args? R_PAREN
 ;
 
-array_call
+array_struct
     : (L_SQUARE expr R_SQUARE)+
 ;
 
