@@ -152,12 +152,12 @@ expr
     | expr AND_OP expr #AndExpr
     | expr OR_OP expr #OrExpr
     | expr AS_OP expr #AssignExpr
-    | expr array_struct #ArrayAccessExpr
+    | expr array_struct+ #ArrayAccessExpr
     | expr DOT method_call #ObjectMethodCall
     | method_call #GlobalMethodCall
     | expr DOT expr #ObjectProperty
     | RES_THIS #ThisExpr
-    | RES_NEW (ID | RES_INT | RES_BOOLEAN | RES_STRING) array_struct #NewArrayExpr
+    | RES_NEW (ID | RES_INT | RES_BOOLEAN | RES_STRING) array_struct+ #NewArrayExpr
     | RES_READ_INT L_PAREN R_PAREN #ReadIntExpr
     | RES_READ_LINE L_PAREN R_PAREN #ReadLineExpr
     | RES_NEW ID L_PAREN R_PAREN #NewObjExpr
@@ -173,7 +173,7 @@ method_call
 ;
 
 array_struct
-    : (L_SQUARE expr R_SQUARE)+
+    : L_SQUARE expr R_SQUARE
 ;
 
 args
