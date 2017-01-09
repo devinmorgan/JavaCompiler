@@ -9,8 +9,8 @@ public class AstArrayType extends AstNonVoidType {
     final AstNonVoidType type;
     final int dimensions;
 
-    public AstArrayType(int line, int col, AstNonVoidType type, int dimensions) {
-        super(line, col);
+    public AstArrayType(AstNonVoidType type, int dimensions) {
+        super(type.getLine(), type.getCol());
         this.type = type;
         this.dimensions = dimensions;
     }

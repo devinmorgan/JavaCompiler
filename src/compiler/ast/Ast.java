@@ -11,4 +11,12 @@ public abstract class Ast {
         this.line = line;
         this.col = col;
     }
+
+    public int getLine() {
+        return line;
+    }
+
+    public int getCol() {
+        return col;
+    }
 }

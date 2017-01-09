@@ -12,11 +12,8 @@ public class AstMethodSig extends Ast {
     final String name;
     final AstParamsList params;
 
-    public AstMethodSig(int line, int col,
-                        AstType returnType,
-                        String name,
-                        AstParamsList params) {
-        super(line, col);
+    public AstMethodSig(AstType returnType, String name, AstParamsList params) {
+        super(returnType.getLine(), returnType.getCol());
         this.returnType = returnType;
         this.name = name;
         this.params = params;

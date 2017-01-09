@@ -9,10 +9,13 @@ import java.util.ArrayList;
  * Created by devinmorgan on 1/5/17.
  */
 public class AstParamsList extends Ast {
-    final ArrayList<AstParam> paramsList;
+    final ArrayList<AstParam> paramsList = new ArrayList<>();
 
-    public AstParamsList(int line, int col, ArrayList<AstParam> paramsList) {
+    public AstParamsList(int line, int col) {
         super(line, col);
-        this.paramsList = paramsList;
+    }
+
+    public void addParam(AstParam param) {
+        this.paramsList.add(param);
     }
 }
