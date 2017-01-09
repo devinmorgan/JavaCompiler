@@ -44,6 +44,7 @@ import compiler.ast.stmt.ctrl_flow.AstNonVoidReturnStmt;
 import compiler.ast.stmt.ctrl_flow.AstVoidReturnStmt;
 import compiler.ast.stmt.ctrl_flow.loops.AstBreakStmt;
 import compiler.ast.stmt.ctrl_flow.loops.AstContinueStmt;
+import compiler.ast.stmt.ctrl_flow.loops.AstForLoop;
 import compiler.ast.stmt.ctrl_flow.loops.AstWhileLoop;
 import compiler.ast.type.*;
 import compiler.grammar.JavaParser;
@@ -480,7 +481,60 @@ public class JavaListener extends JavaParserBaseListener {
     }
     
     @Override public void exitForStmt(JavaParser.ForStmtContext ctx) {
-        // TODO: 1/9/17 Figure out how to handle the 2 optional expressions inf the For-Loop
+        // we expect an AstStmt on the stack (the loop body)
+        if (!(this.buildStack.peek() instanceof AstStmt)) {
+            String message = "Expected AstStmt. Found: "
+                    + this.buildStack.peek().getClass().toString();
+            throw new WrongStackElementException(message);
+        }
+
+        // get the for loop body
+        AstStmt forBody = (AstStmt) this.buildStack.pop();
+
+        // check if an increment expression was included
+        AstExpr incExpr = null;
+        if (!ctx.inc_expr.isEmpty()) {
+
+            // we expect an AstExpr on the stack
+            if (!(this.buildStack.peek() instanceof AstExpr)) {
+                String message = "Expected AstExpr. Found: "
+                        + this.buildStack.peek().getClass().toString();
+                throw new WrongStackElementException(message);
+            }
+
+            // get the incExpr from the stack
+            incExpr = (AstExpr) this.buildStack.pop();
+        }
+
+        // we expect an AstExpr on the stack (the condition expr)
+        if (!(this.buildStack.peek() instanceof AstExpr)) {
+            String message = "Expected AstExpr. Found: "
+                    + this.buildStack.peek().getClass().toString();
+            throw new WrongStackElementException(message);
+        }
+
+        // get the for condition from the stack
+        AstExpr condition = (AstExpr) this.buildStack.pop();
+
+        // check if a start expression was included
+        AstExpr startExpr = null;
+        if (!ctx.start_expr.isEmpty()) {
+
+            // we expect an AstExpr on the stack
+            if (!(this.buildStack.peek() instanceof AstExpr)) {
+                String message = "Expected AstExpr. Found: "
+                        + this.buildStack.peek().getClass().toString();
+                throw new WrongStackElementException(message);
+            }
+
+            // get the incExpr from the stack
+            startExpr = (AstExpr) this.buildStack.pop();
+        }
+
+        // create the AstForLoop and add it to the stack
+        int line = ctx.RES_FOR().getSymbol().getLine();
+        int col = ctx.RES_FOR().getSymbol().getCharPositionInLine();
+        this.buildStack.push(new AstForLoop(line, col, condition, startExpr, incExpr, forBody));
     }
     
     @Override public void exitBreakStmt(JavaParser.BreakStmtContext ctx) {
@@ -1038,12 +1092,8 @@ public class JavaListener extends JavaParserBaseListener {
         this.buildStack.push(list);
     }
 
-    
-    @Override public void enterEveryRule(ParserRuleContext ctx) { }
-    
-    @Override public void exitEveryRule(ParserRuleContext ctx) { }
-    
-    @Override public void visitTerminal(TerminalNode node) { }
-    
-    @Override public void visitErrorNode(ErrorNode node) { }
+
+    @Override public void visitErrorNode(ErrorNode node) {
+        System.out.println(node.getText());
+    }
 }
