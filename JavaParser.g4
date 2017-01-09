@@ -80,11 +80,11 @@ var_decl
 ;
 
 type
-    : (RES_INT | RES_BOOLEAN | RES_STRING | ID) array_unit+
-    | RES_INT
-    | RES_BOOLEAN
-    | RES_STRING
-    | ID
+    : (RES_INT | RES_BOOLEAN | RES_STRING | ID) array_unit+ #ArrayType
+    | RES_INT #IntType
+    | RES_BOOLEAN #BooleanType
+    | RES_STRING #StringType
+    | ID #ObjectType
 ;
 
 array_unit
