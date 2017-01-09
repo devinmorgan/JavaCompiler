@@ -308,6 +308,17 @@ public class JavaParser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
+		public TypeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_type; }
+	 
+		public TypeContext() { }
+		public void copyFrom(TypeContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ArrayTypeContext extends TypeContext {
 		public TerminalNode RES_INT() { return getToken(JavaParser.RES_INT, 0); }
 		public TerminalNode RES_BOOLEAN() { return getToken(JavaParser.RES_BOOLEAN, 0); }
 		public TerminalNode RES_STRING() { return getToken(JavaParser.RES_STRING, 0); }
@@ -318,17 +329,62 @@ public class JavaParser extends Parser {
 		public Array_unitContext array_unit(int i) {
 			return getRuleContext(Array_unitContext.class,i);
 		}
-		public TypeContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_type; }
+		public ArrayTypeContext(TypeContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).enterType(this);
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).enterArrayType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).exitType(this);
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).exitArrayType(this);
+		}
+	}
+	public static class ObjectTypeContext extends TypeContext {
+		public TerminalNode ID() { return getToken(JavaParser.ID, 0); }
+		public ObjectTypeContext(TypeContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).enterObjectType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).exitObjectType(this);
+		}
+	}
+	public static class StringTypeContext extends TypeContext {
+		public TerminalNode RES_STRING() { return getToken(JavaParser.RES_STRING, 0); }
+		public StringTypeContext(TypeContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).enterStringType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).exitStringType(this);
+		}
+	}
+	public static class BooleanTypeContext extends TypeContext {
+		public TerminalNode RES_BOOLEAN() { return getToken(JavaParser.RES_BOOLEAN, 0); }
+		public BooleanTypeContext(TypeContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).enterBooleanType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).exitBooleanType(this);
+		}
+	}
+	public static class IntTypeContext extends TypeContext {
+		public TerminalNode RES_INT() { return getToken(JavaParser.RES_INT, 0); }
+		public IntTypeContext(TypeContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).enterIntType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JavaParserListener ) ((JavaParserListener)listener).exitIntType(this);
 		}
 	}
 
@@ -341,6 +397,7 @@ public class JavaParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
+				_localctx = new ArrayTypeContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(60);
@@ -367,6 +424,7 @@ public class JavaParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new IntTypeContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(66);
@@ -374,6 +432,7 @@ public class JavaParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new BooleanTypeContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(67);
@@ -381,6 +440,7 @@ public class JavaParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new StringTypeContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(68);
@@ -388,6 +448,7 @@ public class JavaParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new ObjectTypeContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(69);

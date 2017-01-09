@@ -40,15 +40,65 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitVar_decl(JavaParser.Var_declContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JavaParser#type}.
+	 * Enter a parse tree produced by the {@code ArrayType}
+	 * labeled alternative in {@link JavaParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void enterType(JavaParser.TypeContext ctx);
+	void enterArrayType(JavaParser.ArrayTypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JavaParser#type}.
+	 * Exit a parse tree produced by the {@code ArrayType}
+	 * labeled alternative in {@link JavaParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void exitType(JavaParser.TypeContext ctx);
+	void exitArrayType(JavaParser.ArrayTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IntType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntType(JavaParser.IntTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IntType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntType(JavaParser.IntTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code BooleanType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterBooleanType(JavaParser.BooleanTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BooleanType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitBooleanType(JavaParser.BooleanTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringType(JavaParser.StringTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringType(JavaParser.StringTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ObjectType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectType(JavaParser.ObjectTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ObjectType}
+	 * labeled alternative in {@link JavaParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectType(JavaParser.ObjectTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#array_unit}.
 	 * @param ctx the parse tree
