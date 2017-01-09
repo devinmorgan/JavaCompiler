@@ -9,10 +9,13 @@ import java.util.ArrayList;
  * Created by devinmorgan on 1/7/17.
  */
 public class AstInterfaceUseList extends Ast {
-    final ArrayList<AstInterfaceUse> interfacesList;
+    final ArrayList<AstInterfaceUse> interfacesList = new ArrayList<>();
 
-    public AstInterfaceUseList(int line, int col, ArrayList<AstInterfaceUse> interfacesList) {
+    public AstInterfaceUseList(int line, int col) {
         super(line, col);
-        this.interfacesList = interfacesList;
+    }
+
+    public void addInterfaceUse(AstInterfaceUse use) {
+        this.interfacesList.add(use);
     }
 }

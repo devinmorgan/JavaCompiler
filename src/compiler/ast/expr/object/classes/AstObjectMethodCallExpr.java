@@ -9,8 +9,8 @@ import compiler.ast.lists.AstArgsList;
  */
 public class AstObjectMethodCallExpr extends AstMethodCallExpr {
     final AstExpr object;
-    public AstObjectMethodCallExpr(int line, int col, String name, AstArgsList args, AstExpr object) {
-        super(line, col, name, args);
+    public AstObjectMethodCallExpr(AstMethodCallExpr method, AstExpr object) {
+        super(method.getLine(), method.getCol(), method.name, method.args);
         this.object = object;
     }
 }

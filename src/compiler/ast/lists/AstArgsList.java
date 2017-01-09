@@ -9,10 +9,13 @@ import java.util.ArrayList;
  * Created by devinmorgan on 1/5/17.
  */
 public class AstArgsList extends Ast{
-    final ArrayList<AstArg> argsList;
+    final ArrayList<AstArg> argsList = new ArrayList<>();
 
-    public AstArgsList(int line, int col, ArrayList<AstArg> argsList) {
+    public AstArgsList(int line, int col) {
         super(line, col);
-        this.argsList = argsList;
+    }
+
+    public void addArg(AstArg arg) {
+        this.argsList.add(arg);
     }
 }

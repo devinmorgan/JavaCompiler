@@ -7,10 +7,7 @@ import compiler.ast.expr.binary.AstBinaryExpr;
  * Created by devinmorgan on 1/5/17.
  */
 public class AstOrExpr extends AstBinaryExpr {
-    public AstOrExpr(int line, int col,
-                     AstExpr leftArg,
-                     String operator,
-                     AstExpr rightArg) {
-        super(line, col, leftArg, operator, rightArg);
+    public AstOrExpr(AstExpr leftArg, String operator, AstExpr rightArg) {
+        super(leftArg.getLine(), leftArg.getCol(), leftArg, operator, rightArg);
     }
 }

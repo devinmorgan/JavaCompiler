@@ -9,10 +9,10 @@ import java.util.ArrayList;
  * Created by devinmorgan on 1/7/17.
  */
 public class AstArrayStruct extends Ast {
-    final ArrayList<AstExpr> dimensionsList;
+    final AstExpr offsetArg;
 
-    public AstArrayStruct(int line, int col, ArrayList<AstExpr> dimensionsList) {
-        super(line, col);
-        this.dimensionsList = dimensionsList;
+    public AstArrayStruct(AstExpr offsetArg) {
+        super(offsetArg.getLine(), offsetArg.getCol());
+        this.offsetArg = offsetArg;
     }
 }

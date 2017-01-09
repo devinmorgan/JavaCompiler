@@ -8,8 +8,8 @@ import compiler.ast.expr.AstExpr;
 public class AstExprStmt extends AstStmt {
     final AstExpr expr;
 
-    public AstExprStmt(int line, int col, AstExpr expr) {
-        super(line, col);
+    public AstExprStmt(AstExpr expr) {
+        super(expr.getLine(), expr.getCol());
         this.expr = expr;
     }
 }

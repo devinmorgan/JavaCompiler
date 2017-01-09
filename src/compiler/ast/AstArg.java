@@ -8,8 +8,8 @@ import compiler.ast.expr.AstExpr;
 public class AstArg extends Ast {
     final AstExpr value;
 
-    public AstArg(int line, int col, AstExpr value) {
-        super(line, col);
+    public AstArg(AstExpr value) {
+        super(value.getLine(), value.getCol());
         this.value = value;
     }
 }

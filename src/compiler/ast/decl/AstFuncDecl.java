@@ -1,6 +1,7 @@
 package compiler.ast.decl;
 
 import compiler.ast.AstParam;
+import compiler.ast.lists.AstParamsList;
 import compiler.ast.stmt.AstStmtBlock;
 import compiler.ast.type.AstType;
 import org.omg.PortableInterceptor.SUCCESSFUL;
@@ -13,15 +14,14 @@ import java.util.ArrayList;
 public class AstFuncDecl extends AstDecl{
     final AstType returnType;
     final String name;
-    final ArrayList<AstParam> params;
+    final AstParamsList params;
     final AstStmtBlock body;
 
-    public AstFuncDecl(int line, int col,
-                       AstType returnType,
+    public AstFuncDecl(AstType returnType,
                        String name,
-                       ArrayList<AstParam> params,
+                       AstParamsList params,
                        AstStmtBlock body) {
-        super(line, col);
+        super(returnType.getLine(), returnType.getCol());
         this.returnType = returnType;
         this.name = name;
         this.params = params;
