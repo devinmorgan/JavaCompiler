@@ -1283,6 +1283,8 @@ public class JavaParser extends Parser {
 		}
 	}
 	public static class ForStmtContext extends StmtContext {
+		public ExprContext start_expr;
+		public ExprContext inc_expr;
 		public TerminalNode RES_FOR() { return getToken(JavaParser.RES_FOR, 0); }
 		public TerminalNode L_PAREN() { return getToken(JavaParser.L_PAREN, 0); }
 		public List<TerminalNode> SEMI_COL() { return getTokens(JavaParser.SEMI_COL); }
@@ -1391,7 +1393,7 @@ public class JavaParser extends Parser {
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << L_PAREN) | (1L << NOT_OP) | (1L << SUB_OP) | (1L << RES_THIS) | (1L << RES_READ_INT) | (1L << RES_NEW) | (1L << RES_READ_LINE) | (1L << RES_NULL) | (1L << BOOL) | (1L << STRING) | (1L << INT) | (1L << ID))) != 0)) {
 					{
 					setState(185);
-					expr(0);
+					((ForStmtContext)_localctx).start_expr = expr(0);
 					}
 				}
 
@@ -1406,7 +1408,7 @@ public class JavaParser extends Parser {
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << L_PAREN) | (1L << NOT_OP) | (1L << SUB_OP) | (1L << RES_THIS) | (1L << RES_READ_INT) | (1L << RES_NEW) | (1L << RES_READ_LINE) | (1L << RES_NULL) | (1L << BOOL) | (1L << STRING) | (1L << INT) | (1L << ID))) != 0)) {
 					{
 					setState(191);
-					expr(0);
+					((ForStmtContext)_localctx).inc_expr = expr(0);
 					}
 				}
 
