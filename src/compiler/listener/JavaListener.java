@@ -59,7 +59,6 @@ import java.util.*;
  * Created by devinmorgan on 1/8/17.
  */
 // TODO: 1/8/17 make sure to implement the .hashCode() and .equals() for every AST class
-// TODO: 1/8/17 A lot of these methods didn't pop items from the stack in the right order (remember its FILO)
 public class JavaListener extends JavaParserBaseListener {
     final Stack<Ast> buildStack = new Stack<>();
     AstProgram astProgram;
@@ -716,7 +715,7 @@ public class JavaListener extends JavaParserBaseListener {
 
         // reverse the arrayList to undo the affect of popping the
         // objects from the stack in reverse order
-        Collections.reverse(offsetsList>);
+        Collections.reverse(offsetsList);
 
         // we expect an AstExpr on the stack
         if (!(this.buildStack.peek() instanceof AstExpr)) {
