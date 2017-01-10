@@ -10,4 +10,19 @@ public class AstInterfaceUse extends Ast {
         super(line, col);
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstInterfaceUse) {
+            AstInterfaceUse that = (AstInterfaceUse) obj;
+
+            return this.name.equals(that.name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }

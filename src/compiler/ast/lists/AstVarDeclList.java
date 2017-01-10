@@ -20,4 +20,18 @@ public class AstVarDeclList extends Ast{
         this.varDeclsList.add(decl);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstVarDeclList) {
+            AstVarDeclList that = (AstVarDeclList) obj;
+
+            return this.varDeclsList.equals(that.varDeclsList);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.varDeclsList.hashCode();
+    }
 }

@@ -25,4 +25,20 @@ public class AstClassDecl extends AstDecl {
         this.implementedInterfaces = implementedInterfaces;
         this.declsList = declsList;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstClassDecl) {
+            AstClassDecl that = (AstClassDecl) obj;
+
+            // no 2 classes can have the same name
+            return this.className.equals(that.className);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.className.hashCode();
+    }
 }

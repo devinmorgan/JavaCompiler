@@ -18,4 +18,19 @@ public class AstInterfaceUseList extends Ast {
     public void addInterfaceUse(AstInterfaceUse use) {
         this.interfacesList.add(use);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstInterfaceUseList) {
+            AstInterfaceUseList that = (AstInterfaceUseList) obj;
+
+            return this.interfacesList.equals(that.interfacesList);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.interfacesList.hashCode();
+    }
 }

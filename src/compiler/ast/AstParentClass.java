@@ -14,4 +14,19 @@ public class AstParentClass extends Ast {
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstParentClass) {
+            AstParentClass that = (AstParentClass) obj;
+
+            return this.name.equals(that.name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }

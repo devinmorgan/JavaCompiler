@@ -15,4 +15,19 @@ public class AstParam extends Ast {
         this.type = type;
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstParam) {
+            AstParam that = (AstParam) obj;
+
+            return this.name.equals(that.name) && this.type.equals(that.type);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode() * this.type.hashCode();
+    }
 }

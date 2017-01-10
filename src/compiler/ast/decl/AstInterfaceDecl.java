@@ -19,4 +19,20 @@ public class AstInterfaceDecl extends AstDecl {
         this.name = name;
         this.methodSigs = methodSigs;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstInterfaceDecl) {
+            AstInterfaceDecl that = (AstInterfaceDecl) obj;
+
+            // no 2 interfaces can have the same name
+            return this.name.equals(that.name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }

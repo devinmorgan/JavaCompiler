@@ -7,4 +7,14 @@ public class AstStringType extends AstNonVoidType {
     public AstStringType(int line, int col) {
         super(line, col);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof AstStringType;
+    }
+
+    @Override
+    public int hashCode() {
+        return 17;
+    }
 }

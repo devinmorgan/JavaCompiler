@@ -10,4 +10,19 @@ public class AstIdType extends AstNonVoidType {
         super(line, col);
         this.typeName = typeName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstIdType) {
+            AstIdType that = (AstIdType) obj;
+
+            return this.typeName.equals(that.typeName);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.typeName.hashCode();
+    }
 }

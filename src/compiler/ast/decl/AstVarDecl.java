@@ -15,4 +15,20 @@ public class AstVarDecl extends AstDecl {
         this.name = name;
         this.type = type;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstVarDecl) {
+            AstVarDecl that = (AstVarDecl) obj;
+
+            return this.name.equals(that.name)
+                    && this.type.equals(that.type);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode() * this.type.hashCode();
+    }
 }

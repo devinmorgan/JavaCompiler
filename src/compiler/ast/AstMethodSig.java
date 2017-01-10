@@ -18,4 +18,21 @@ public class AstMethodSig extends Ast {
         this.name = name;
         this.params = params;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AstMethodSig) {
+            AstMethodSig that = (AstMethodSig) obj;
+
+            return this.returnType.equals(that.returnType)
+                    && this.name.equals(that.name)
+                    && this.params.equals(that.params);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.returnType.hashCode() * this.name.hashCode();
+    }
 }
