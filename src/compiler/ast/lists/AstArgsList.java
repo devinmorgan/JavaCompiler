@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by devinmorgan on 1/5/17.
  */
 public class AstArgsList extends Ast{
-    final ArrayList<AstArg> argsList = new ArrayList<>();
+    public final ArrayList<AstArg> argsList = new ArrayList<>();
 
     public AstArgsList(int line, int col) {
         super(line, col);
