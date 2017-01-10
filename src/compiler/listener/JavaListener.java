@@ -53,9 +53,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by devinmorgan on 1/8/17.
@@ -107,7 +105,7 @@ public class JavaListener extends JavaParserBaseListener {
     }
     
     @Override public void exitVar_decl(JavaParser.Var_declContext ctx) {
-        // we expect there to an AstNonVoidType for all the varDecls
+        // we expect an AstNonVoidType for all the varDecls
         if (!(this.buildStack.peek() instanceof AstNonVoidType)) {
             String message = "Expected AstNonVoidType. Found: "
                     + this.buildStack.peek().getClass().toString();
@@ -144,18 +142,35 @@ public class JavaListener extends JavaParserBaseListener {
             dimensions++;
         }
 
-        // we expect there to be a type
-        if (!(this.buildStack.peek() instanceof AstNonVoidType)) {
-            String message = "Expected AstNonVoidType. Founder: "
-                    + this.buildStack.peek().getClass().toString();
+        // collect the tyep of the array
+        AstNonVoidType type;
+        if (ctx.RES_INT() != null) {
+            int line = ctx.RES_INT().getSymbol().getLine();
+            int col = ctx.RES_INT().getSymbol().getCharPositionInLine();
+            type = new AstIntType(line, col);
+        }
+        else if (ctx.RES_BOOLEAN() != null) {
+            int line = ctx.RES_BOOLEAN().getSymbol().getLine();
+            int col = ctx.RES_BOOLEAN().getSymbol().getCharPositionInLine();
+            type = new AstBoolType(line, col);
+        }
+        else if (ctx.RES_STRING() != null) {
+            int line = ctx.RES_STRING().getSymbol().getLine();
+            int col = ctx.RES_STRING().getSymbol().getCharPositionInLine();
+            type = new AstStringType(line, col);
+        }
+        else if (ctx.ID() != null) {
+            int line = ctx.ID().getSymbol().getLine();
+            int col = ctx.ID().getSymbol().getCharPositionInLine();
+            type = new AstStringType(line, col);
+        }
+        else {
+            String message = "Missing or Illegal array type";
             throw new WrongStackElementException(message);
         }
 
-        // pop the array type off the stack to determine the array type
-        AstNonVoidType arrayType = (AstNonVoidType) this.buildStack.pop();
-
         // construct AstArrayType and add it to the stack
-        this.buildStack.push(new AstArrayType(arrayType, dimensions));
+        this.buildStack.push(new AstArrayType(type, dimensions));
     }
 
     @Override public void exitIntType(JavaParser.IntTypeContext ctx) {
@@ -232,11 +247,10 @@ public class JavaListener extends JavaParserBaseListener {
     }
 
     @Override public void exitParams(JavaParser.ParamsContext ctx) {
-        // TODO: 1/8/17 verify that ctx.ID() are printed in same order
-
-        // create the params list
+        // create the params list by popping items in reverse order
+        // since are using a stack
         AstParamsList paramsList = new AstParamsList(-1, -1);
-        for (int i = 0; i < ctx.ID().size(); i++) {
+        for (int i = ctx.ID().size() - 1; i >= 0; i--) {
 
             // we expect a Type for each ID (var name)
             if (!(this.buildStack.peek() instanceof AstNonVoidType)) {
@@ -357,18 +371,21 @@ public class JavaListener extends JavaParserBaseListener {
         // get the method name
         String name = ctx.ID().getText();
 
-
         // create the method sig and add it to the stack
         this.buildStack.push(new AstMethodSig(returnType, name, params));
     }
     
     @Override public void exitStmt_block(JavaParser.Stmt_blockContext ctx) {
-        // collect the contents of the stmt block (varDecls and stmts)
+        // collect the var_decls and func_decls from the class_decl
         ArrayList<Ast> blockContents = new ArrayList<>();
         while (this.buildStack.peek() instanceof AstVarDecl
                 || this.buildStack.peek() instanceof AstStmt) {
             blockContents.add(this.buildStack.pop());
         }
+
+        // we need to account for the stack popping the
+        // items in reverse order
+        Collections.reverse(blockContents);
 
         // create the Stmt block and add it to the stack
         this.buildStack.push(new AstStmtBlock(-1, -1, blockContents));
@@ -390,15 +407,15 @@ public class JavaListener extends JavaParserBaseListener {
     }
 
     @Override public void exitIfElseStmt(JavaParser.IfElseStmtContext ctx) {
-        // we expect an AstExpr on the stack for the condition
-        if (!(this.buildStack.peek() instanceof AstExpr)) {
-            String message = "Expected AstExpr. Found: "
+        // we expect an AstStmt on the stack (else-code)
+        if (!(this.buildStack.pop() instanceof AstStmt)) {
+            String message = "Expected AstStmt. Found: "
                     + this.buildStack.peek().getClass().toString();
             throw new WrongStackElementException(message);
         }
 
-        // get the condition expr from the stack
-        AstExpr condition = (AstExpr) this.buildStack.pop();
+        // get the else-code form the stack
+        AstStmt elseBlock = (AstStmt) this.buildStack.pop();
 
         // we expect an AstStmt on the stack (then-code)
         if (!(this.buildStack.pop() instanceof AstStmt)) {
@@ -410,23 +427,6 @@ public class JavaListener extends JavaParserBaseListener {
         // get the then-code from the stack
         AstStmt thenBlock = (AstStmt) this.buildStack.pop();
 
-        // we expect an AstStmt on the stack (else-code)
-        if (!(this.buildStack.pop() instanceof AstStmt)) {
-            String message = "Expected AstStmt. Found: "
-                    + this.buildStack.peek().getClass().toString();
-            throw new WrongStackElementException(message);
-        }
-
-        // get the else-code form the stack
-        AstStmt elseBlock = (AstStmt) this.buildStack.pop();
-
-        // create the if stmt and push it to the stack
-        int line = ctx.RES_IF().getSymbol().getLine();
-        int col = ctx.RES_IF().getSymbol().getCharPositionInLine();
-        this.buildStack.push(new AstIfElseStmt(line, col, condition, thenBlock, elseBlock));
-    }
-    
-    @Override public void exitIfStmt(JavaParser.IfStmtContext ctx) {
         // we expect an AstExpr on the stack for the condition
         if (!(this.buildStack.peek() instanceof AstExpr)) {
             String message = "Expected AstExpr. Found: "
@@ -437,6 +437,13 @@ public class JavaListener extends JavaParserBaseListener {
         // get the condition expr from the stack
         AstExpr condition = (AstExpr) this.buildStack.pop();
 
+        // create the if stmt and push it to the stack
+        int line = ctx.RES_IF().getSymbol().getLine();
+        int col = ctx.RES_IF().getSymbol().getCharPositionInLine();
+        this.buildStack.push(new AstIfElseStmt(line, col, condition, thenBlock, elseBlock));
+    }
+    
+    @Override public void exitIfStmt(JavaParser.IfStmtContext ctx) {
         // we expect an AstStmt on the stack (then-code)
         if (!(this.buildStack.pop() instanceof AstStmt)) {
             String message = "Expected AstStmt. Found: "
@@ -447,13 +454,6 @@ public class JavaListener extends JavaParserBaseListener {
         // get the then-code from the block
         AstStmt thenBlock = (AstStmt) this.buildStack.pop();
 
-        // create the if stmt and push it to the stack
-        int line = ctx.RES_IF().getSymbol().getLine();
-        int col = ctx.RES_IF().getSymbol().getCharPositionInLine();
-        this.buildStack.push(new AstIfStmt(line, col, condition, thenBlock));
-    }
-    
-    @Override public void exitWhileStmt(JavaParser.WhileStmtContext ctx) {
         // we expect an AstExpr on the stack for the condition
         if (!(this.buildStack.peek() instanceof AstExpr)) {
             String message = "Expected AstExpr. Found: "
@@ -464,6 +464,13 @@ public class JavaListener extends JavaParserBaseListener {
         // get the condition expr from the stack
         AstExpr condition = (AstExpr) this.buildStack.pop();
 
+        // create the if stmt and push it to the stack
+        int line = ctx.RES_IF().getSymbol().getLine();
+        int col = ctx.RES_IF().getSymbol().getCharPositionInLine();
+        this.buildStack.push(new AstIfStmt(line, col, condition, thenBlock));
+    }
+    
+    @Override public void exitWhileStmt(JavaParser.WhileStmtContext ctx) {
         // we expect an AstStmt on the stack (then-code)
         if (!(this.buildStack.pop() instanceof AstStmt)) {
             String message = "Expected AstStmt. Found: "
@@ -473,6 +480,16 @@ public class JavaListener extends JavaParserBaseListener {
 
         // get the then-code from the block
         AstStmt whileBody = (AstStmt) this.buildStack.pop();
+
+        // we expect an AstExpr on the stack for the condition
+        if (!(this.buildStack.peek() instanceof AstExpr)) {
+            String message = "Expected AstExpr. Found: "
+                    + this.buildStack.peek().getClass().toString();
+            throw new WrongStackElementException(message);
+        }
+
+        // get the condition expr from the stack
+        AstExpr condition = (AstExpr) this.buildStack.pop();
 
         // create the if stmt and push it to the stack
         int line = ctx.RES_WHILE().getSymbol().getLine();
@@ -550,15 +567,17 @@ public class JavaListener extends JavaParserBaseListener {
     }
     
     @Override public void exitNonVoidReturnStmt(JavaParser.NonVoidReturnStmtContext ctx) {
-        // get the AstExpr that is the stmt
+        // we expect an AstExpr on the stack (the return value)
         if (!(this.buildStack.peek() instanceof AstExpr)) {
             String message = "Expected AstExpr. Found: "
                     + this.buildStack.peek().getClass().toString();
             throw new WrongStackElementException(message);
         }
+
+        // get the returnExpr from the stack
         AstExpr expr = (AstExpr) this.buildStack.pop();
 
-        // create the print stmt and push it the stack
+        // create the return stmt and push it the stack
         this.buildStack.push(new AstNonVoidReturnStmt(expr));
     }
 
@@ -569,12 +588,14 @@ public class JavaListener extends JavaParserBaseListener {
     }
 
     @Override public void exitPrintStmt(JavaParser.PrintStmtContext ctx) {
-        // get the AstExpr to be printed
+        // we expect an AstExpr on the stack (the expr to be printed)
         if (!(this.buildStack.peek() instanceof AstExpr)) {
             String message = "Expected AstExpr. Found: "
                     + this.buildStack.peek().getClass().toString();
             throw new WrongStackElementException(message);
         }
+
+        // grab the expr off the stack
         AstExpr expr = (AstExpr) this.buildStack.pop();
 
         // create the print stmt and push it the stack
@@ -656,12 +677,14 @@ public class JavaListener extends JavaParserBaseListener {
     }
 
     @Override public void exitParenthExpr(JavaParser.ParenthExprContext ctx) {
-        // get the AstExpr that is the stmt
+        // we expect an AstExpr to be on the stack
         if (!(this.buildStack.peek() instanceof AstExpr)) {
             String message = "Expected AstExpr. Found: "
                     + this.buildStack.peek().getClass().toString();
             throw new WrongStackElementException(message);
         }
+
+        // grab the expr from the stack
         AstExpr expr = (AstExpr) this.buildStack.pop();
 
         // create the parenthetical expr and push it the stack
@@ -690,6 +713,10 @@ public class JavaListener extends JavaParserBaseListener {
         while (this.buildStack.peek() instanceof AstArrayStruct) {
             offsetsList.add((AstArrayStruct) this.buildStack.pop());
         }
+
+        // reverse the arrayList to undo the affect of popping the
+        // objects from the stack in reverse order
+        Collections.reverse(offsetsList>);
 
         // we expect an AstExpr on the stack
         if (!(this.buildStack.peek() instanceof AstExpr)) {
@@ -978,6 +1005,10 @@ public class JavaListener extends JavaParserBaseListener {
             dimensionSizes.add((AstArrayStruct) this.buildStack.pop());
         }
 
+        // to undo the affects of popping the arrayStructs in reverse
+        // order, we need to reverse the arrayList
+        Collections.reverse(dimensionSizes);
+
         // determine the array type
         AstNonVoidType arrayType;
         if (ctx.RES_INT() != null) {
@@ -1011,12 +1042,14 @@ public class JavaListener extends JavaParserBaseListener {
     }
     
     @Override public void exitGlobalMethodCall(JavaParser.GlobalMethodCallContext ctx) {
-        // get the method call off the stack
+        // we expect an AstMethodCallExpr on the stack
         if (!(this.buildStack.peek() instanceof AstMethodCallExpr)) {
             String message = "Expected AstMethodCallExpr. Found: "
                     + this.buildStack.peek().getClass().toString();
             throw new WrongStackElementException(message);
         }
+
+        // get the AstMethodCallExpr from the stack
         AstMethodCallExpr methodCall = (AstMethodCallExpr) this.buildStack.pop();
 
         // create the global methodCallExpr and add it to the stack
@@ -1024,12 +1057,14 @@ public class JavaListener extends JavaParserBaseListener {
     }
     
     @Override public void exitNotExpr(JavaParser.NotExprContext ctx) {
-        // get the AstExpr that is the stmt
+        // we expect an AstExpr on the stack
         if (!(this.buildStack.peek() instanceof AstExpr)) {
             String message = "Expected AstExpr. Found: "
                     + this.buildStack.peek().getClass().toString();
             throw new WrongStackElementException(message);
         }
+
+        // grab the AstExpr from the stack
         AstExpr expr = (AstExpr) this.buildStack.pop();
 
         // create the notExpr and push it the stack
@@ -1079,14 +1114,22 @@ public class JavaListener extends JavaParserBaseListener {
     @Override public void exitArgs(JavaParser.ArgsContext ctx) {
         // grab args from the stack and construct the args list
         AstArgsList list = new AstArgsList(-1, -1);
-        for (int i = 0; i < ctx.COMMA().size() + 1; i++) {
+        for (int i = ctx.COMMA().size(); i >= 0; i--) {
+
+            // we expect an AstExpr on the stack (the arg value)
             if (!(this.buildStack.peek() instanceof AstExpr)) {
                 String message = "Expected AstExpr. Found: "
                         + this.buildStack.peek().getClass().toString();
                 throw new WrongStackElementException(message);
             }
+
+            // pop the arg value from the stack
             list.addArg(new AstArg((AstExpr) this.buildStack.pop()));
         }
+
+        // we need to reverse the list to undo the affects
+        // of popping the args from the stack in reverse order
+        Collections.reverse(list.argsList);
 
         // add args list to stack
         this.buildStack.push(list);
