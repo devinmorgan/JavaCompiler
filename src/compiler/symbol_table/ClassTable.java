@@ -15,9 +15,12 @@ public class ClassTable {
     final String name;
     String parentName;
     final HashSet<String> interfaces = new HashSet<>();
-    final HashSet<ClassTable> children = new HashSet<>();
     final HashMap<Function, AstType> functions = new HashMap<>();
     final HashMap<String, AstType> fields = new HashMap<>();
+
+    public HashSet<String> getInterfaces() {
+        return this.interfaces;
+    }
 
     public ClassTable(String name, SymbolTable symbolTable) {
         this.name = name;
@@ -46,12 +49,7 @@ public class ClassTable {
         }
     }
 
-    public void addChildClass(ClassTable childClass) {
-        this.children.add(childClass);
-    }
-
     public void addClassFunction(AstFuncDecl funcDecl, StringBuilder errorMessage) {
-        // create the Function from the AstFuncDecl
         Function func = new Function(funcDecl.getName(), funcDecl.getParams());
 
         // only add the function if it has not already been declared
