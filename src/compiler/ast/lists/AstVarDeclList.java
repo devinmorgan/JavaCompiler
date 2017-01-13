@@ -3,6 +3,7 @@ package compiler.ast.lists;
 import compiler.ast.Ast;
 import compiler.ast.decl.AstVarDecl;
 import compiler.ast.type.AstNonVoidType;
+import compiler.symbol_table.SymbolTable;
 
 import java.util.HashSet;
 
@@ -33,5 +34,13 @@ public class AstVarDeclList extends Ast{
     @Override
     public int hashCode() {
         return this.varDeclsList.hashCode();
+    }
+
+    @Override
+    public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
+        // validate each varDecl individually
+        for (AstVarDecl varDecl : this.varDeclsList) {
+            varDecl.performSemanticAnalysis(environment, errorMessage);
+        }
     }
 }
