@@ -4,6 +4,7 @@ import compiler.ast.AstParam;
 import compiler.ast.lists.AstParamsList;
 import compiler.ast.stmt.AstStmtBlock;
 import compiler.ast.type.AstType;
+import compiler.symbol_table.SymbolTable;
 import org.omg.PortableInterceptor.SUCCESSFUL;
 
 import java.util.ArrayList;
@@ -28,13 +29,29 @@ public class AstFuncDecl extends AstDecl{
         this.body = body;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public AstParamsList getParams() {
+        return this.params;
+    }
+
+    public AstType getReturnType() {
+        return this.returnType;
+    }
+
+    /**
+        2 funcDecls are definited as equal if they have
+     the same name and they have the same parameter types
+     in the same order
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof AstFuncDecl) {
             AstFuncDecl that = (AstFuncDecl) obj;
 
-            return this.returnType.equals(that.returnType)
-                    && this.name.equals(that.name)
+            return this.name.equals(that.name)
                     && this.params.equals(that.params);
         }
         return false;
@@ -42,6 +59,24 @@ public class AstFuncDecl extends AstDecl{
 
     @Override
     public int hashCode() {
-        return this.returnType.hashCode() * this.name.hashCode() * this.params.hashCode();
+        return  this.name.hashCode() * this.params.hashCode();
+    }
+
+    @Override
+    public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
+        // create a new local scope
+        environment.pushNewScope();
+
+        // valid ate the return type
+        this.returnType.performSemanticAnalysis(environment, errorMessage);
+
+        // validate the functions params
+        this.params.performSemanticAnalysis(environment, errorMessage);
+
+        // validate the function body
+        this.body.performSemanticAnalysis(environment, errorMessage);
+
+        // remove the current local scope
+        environment.popLocalScope();
     }
 }
