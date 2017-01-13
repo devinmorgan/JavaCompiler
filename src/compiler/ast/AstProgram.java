@@ -58,9 +58,13 @@ public class AstProgram extends Ast {
 
         environment.checkClassesForSemanticErrors(errorMessage);
 
+        // enter the global scope
+        environment.pushNewScope();
+
         // perform semantic analysis on the global vars
         for (AstVarDecl varDecl : this.globalVars)
             varDecl.performSemanticAnalysis(environment, errorMessage);
+        // exit global scope
 
         // perform semantic analysis on the global functions
         for (AstFuncDecl funcDecl : this.staticFuncs)
@@ -73,6 +77,9 @@ public class AstProgram extends Ast {
         // perform semantic analysis on the declared interfaces
         for (AstInterfaceDecl interfaceDecl : this.interfaces)
             interfaceDecl.performSemanticAnalysis(environment, errorMessage);
+
+        // exit the global scope
+        environment.popLocalScope();
 
         /*---------------------------AstProgram Checks-----------------------------*/
 
