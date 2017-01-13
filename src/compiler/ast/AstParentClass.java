@@ -1,5 +1,7 @@
 package compiler.ast;
 
+import compiler.symbol_table.SymbolTable;
+
 /**
  * Created by devinmorgan on 1/9/17.
  */
@@ -29,4 +31,15 @@ public class AstParentClass extends Ast {
     public int hashCode() {
         return this.name.hashCode();
     }
+
+    /**
+     * checkClassesForSemanticErrors() would have already
+     * checked whether the parent class is a valid class
+     * (i.e. was declared and no cyclic inheritance)
+     */
+    @Override
+    public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
+        return;
+    }
+
 }
