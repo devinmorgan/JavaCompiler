@@ -6,7 +6,7 @@ import compiler.ast.decl.*;
 import compiler.ast.type.AstType;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Stack;
 
 /**
  * Created by devinmorgan on 1/11/17.
@@ -16,7 +16,9 @@ public class SymbolTable {
     final HashMap<Function, AstType> staticFunctions = new HashMap<>();
     final HashMap<String, ClassTable> classes = new HashMap<>();
     final HashMap<String, InterfaceTable> interfaces = new HashMap<>();
-    final HashMap<String, AstType> localVariableScope = new HashMap<>();
+    final Stack<HashMap<String, AstType>> scopeStack = new Stack<>();
+
+    /*---------------------------Build Symbol Table Functions---------------------------*/
 
     public void addNewGlobalVariable(AstVarDecl varDecl, StringBuilder errorMessage) {
         String varName = varDecl.getName();
@@ -107,7 +109,31 @@ public class SymbolTable {
         }
     }
 
-    public void configureSymbolTable(StringBuilder errorMessage) {
+    /*---------------------------Semantic Check Functions---------------------------*/
+
+    public AstType getReturnTypeOfStaticFunction(Function function) {
+        if (this.staticFunctions.containsKey(function)) {
+            return this.staticFunctions.get(function);
+        }
+        return null;
+    }
+
+    public boolean isIdADeclaredClassOrInterface(String id) {
+        return (this.classes.containsKey(id) || this.interfaces.containsKey(id));
+    }
+
+    public boolean addVariableDeclarationToLocalScope(String name, AstType type) {
+        if (this.scopeStack.peek().containsKey(name))
+            return false;
+        this.scopeStack.peek().put(name, type);
+        return true;
+    }
+
+    public boolean isVariableDeclaredInLocalScope(String name) {
+        return this.scopeStack.peek().containsKey(name);
+    }
+
+    public void checkClassesForSemanticErrors(StringBuilder errorMessage) {
         for (String curClassName : this.classes.keySet()) {
             ClassTable curClassTable = this.classes.get(curClassName);
 
@@ -137,32 +163,50 @@ public class SymbolTable {
             // semantic checks for interfaces
             ClassTable table = this.classes.get(curClassName);
             for (String interfaceName : table.getInterfaces()) {
-                InterfaceTable interfaceTable = this.interfaces.get(interfaceName);
 
-                // verify that curClassTable implements all of the functions required
-                for (Function interfaceFunc : interfaceTable.getFunctions().keySet()) {
+                // verify that the interface has already been declared
+                if (! this.interfaces.containsKey(interfaceName)) {
+                    String message = "Class " + table.name + " implements interface "
+                            + interfaceName + ", which has not been declared\n";
+                    errorMessage.append(message);
+                }
+                else {
+                    InterfaceTable interfaceTable = this.interfaces.get(interfaceName);
 
-                    // the function is just not declared
-                    if (! table.functions.containsKey(interfaceFunc)) {
-                        String message = "Class " + curClassName + " does not implement " +
-                                "all required methods for interface " + interfaceName + "\n";
-                        errorMessage.append(message);
-                        break;
-                    }
+                    // verify that curClassTable implements all of the functions required
+                    for (Function interfaceFunc : interfaceTable.getFunctions().keySet()) {
 
-                    // the function is declared but has the wrong return type
-                    AstType classFuncReturnType = table.functions.get(interfaceFunc);
-                    AstType interfaceFuncReturnType = interfaceTable.functions.get(interfaceFunc);
-                    if (! classFuncReturnType.equals(interfaceFuncReturnType)) {
-                        String message = "Class " + curClassName + " does not implement " +
-                                "all required methods for interface " + interfaceName + "\n";
-                        errorMessage.append(message);
+                        // the function is just not declared
+                        if (! table.functions.containsKey(interfaceFunc)) {
+                            String message = "Class " + curClassName + " does not implement " +
+                                    "all required methods for interface " + interfaceName + "\n";
+                            errorMessage.append(message);
+                            break;
+                        }
+
+                        // the function is declared but has the wrong return type
+                        AstType classFuncReturnType = table.functions.get(interfaceFunc);
+                        AstType interfaceFuncReturnType = interfaceTable.functions.get(interfaceFunc);
+                        if (! classFuncReturnType.equals(interfaceFuncReturnType)) {
+                            String message = "Class " + curClassName + " does not implement " +
+                                    "all required methods for interface " + interfaceName + "\n";
+                            errorMessage.append(message);
+                        }
                     }
                 }
-            }
 
+            }
         }
     }
+
+    public void pushNewScope() {
+        this.scopeStack.push(new HashMap<>());
+    }
+
+    public void popLocalScope() {
+        this.scopeStack.pop();
+    }
+
 }
 
 
