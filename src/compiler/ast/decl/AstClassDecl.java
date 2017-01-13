@@ -1,6 +1,7 @@
 package compiler.ast.decl;
 
 import compiler.ast.lists.AstInterfaceUseList;
+import compiler.symbol_table.SymbolTable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +14,22 @@ public class AstClassDecl extends AstDecl {
     String parentClass;
     AstInterfaceUseList implementedInterfaces;
     final HashSet<AstDecl> declsList;
+
+    public String getClassName() {
+        return this.className;
+    }
+
+    public HashSet<AstDecl> getDeclsList() {
+        return this.declsList;
+    }
+
+    public String getParentClass() {
+        return this.parentClass;
+    }
+
+    public AstInterfaceUseList getImplementedInterfaces() {
+        return this.implementedInterfaces;
+    }
 
     public AstClassDecl(int line, int col,
                         String className,
@@ -40,5 +57,19 @@ public class AstClassDecl extends AstDecl {
     @Override
     public int hashCode() {
         return this.className.hashCode();
+    }
+
+    @Override
+    public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
+        // create a new local scope
+        environment.pushNewScope();
+
+        // validate each field and method in the class
+        for (AstDecl decl : this.declsList) {
+            decl.performSemanticAnalysis(environment, errorMessage);
+        }
+
+        // remove the current local scope
+        environment.popLocalScope();
     }
 }
