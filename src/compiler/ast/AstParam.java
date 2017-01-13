@@ -1,7 +1,7 @@
 package compiler.ast;
 
-import compiler.ast.Ast;
 import compiler.ast.type.AstNonVoidType;
+import compiler.symbol_table.SymbolTable;
 
 /**
  * Created by devinmorgan on 1/5/17.
@@ -16,18 +16,39 @@ public class AstParam extends Ast {
         this.name = name;
     }
 
+    public AstNonVoidType getType() {
+        return this.type;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * 2 AstParams are equivalent IFF they have the same name
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof AstParam) {
             AstParam that = (AstParam) obj;
 
-            return this.name.equals(that.name) && this.type.equals(that.type);
+            return this.name.equals(that.name);
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return this.name.hashCode() * this.type.hashCode();
+        return this.name.hashCode();
+    }
+
+    @Override
+    public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
+        // check if the param has already been declared
+        if (environment.addVariableDeclarationToLocalScope(this.name, this.type, errorMessage)) {
+
+            // check the validity of the AstNonVoidType
+            this.type.performSemanticAnalysis(environment, errorMessage);
+        }
     }
 }
