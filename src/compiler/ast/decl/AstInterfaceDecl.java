@@ -1,6 +1,7 @@
 package compiler.ast.decl;
 
 import compiler.ast.AstMethodSig;
+import compiler.symbol_table.SymbolTable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,6 +21,14 @@ public class AstInterfaceDecl extends AstDecl {
         this.methodSigs = methodSigs;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public HashSet<AstMethodSig> getMethodSigs() {
+        return this.methodSigs;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof AstInterfaceDecl) {
@@ -34,5 +43,13 @@ public class AstInterfaceDecl extends AstDecl {
     @Override
     public int hashCode() {
         return this.name.hashCode();
+    }
+
+    @Override
+    public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
+        // validate each of the method signatures individually
+        for (AstMethodSig methodSig : this.methodSigs) {
+            methodSig.performSemanticAnalysis(environment, errorMessage);
+        }
     }
 }
