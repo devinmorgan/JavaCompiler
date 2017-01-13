@@ -65,7 +65,7 @@ public class AstFuncDecl extends AstDecl{
     @Override
     public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
         // create a new local scope
-        environment.pushNewScope();
+        environment.pushNewFunctionScope(this.returnType);
 
         // valid ate the return type
         this.returnType.performSemanticAnalysis(environment, errorMessage);
