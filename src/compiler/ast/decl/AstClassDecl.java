@@ -62,7 +62,7 @@ public class AstClassDecl extends AstDecl {
     @Override
     public void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage) {
         // create a new local scope
-        environment.pushNewScope();
+        environment.pushNewClassScope(this.className);
 
         // validate each field and method in the class
         for (AstDecl decl : this.declsList) {
