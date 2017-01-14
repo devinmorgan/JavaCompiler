@@ -18,4 +18,10 @@ public abstract class AstExpr extends Ast {
             super("LHS is of type " + lhsType.toString() + " but RHS is of type " + rhsType.toString());
         }
     }
+
+    public class UnknownVariableTypeException extends RuntimeException {
+        public UnknownVariableTypeException(String varName) {
+            super("Variable " + varName + " has an unknown type or has not been declared");
+        }
+    }
 }

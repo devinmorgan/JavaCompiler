@@ -11,6 +11,10 @@ public class AstVarLocationExpr extends AstExpr {
     final String varName;
     private AstType varType;
 
+    public String getVarName() {
+        return this.varName;
+    }
+
     public AstVarLocationExpr(int line, int col, String varName) {
         super(line, col);
         this.varName = varName;
@@ -34,12 +38,6 @@ public class AstVarLocationExpr extends AstExpr {
             String message = "Variable " + this.varName
                     + " is used before it is has been declared. Line: " + this.getLine() + "\n";
             errorMessage.append(message);
-        }
-    }
-
-    private class UnknownVariableTypeException extends RuntimeException {
-        UnknownVariableTypeException(String varName) {
-            super("Variable " + varName + " has an unknown type or has not been declared");
         }
     }
 }
