@@ -1,6 +1,10 @@
 package compiler.ast.expr;
 
+import compiler.ast.decl.AstVarDecl;
 import compiler.ast.expr.binary.AstBinaryExpr;
+import compiler.ast.expr.object.array.AstArrayAccessExpr;
+import compiler.ast.expr.object.classes.AstObjectPropertyExpr;
+import compiler.ast.lists.AstVarDeclList;
 import compiler.ast.type.AstType;
 import compiler.symbol_table.SymbolTable;
 
@@ -37,6 +41,14 @@ public class AstAssignExpr extends AstExpr{
         if (! this.storeLoc.getType().equals(this.value.getType())) {
             String message = "Evaluated type of rhs of assignment does " +
                     "not match the type on the lhs. Line: " + this.getLine();
+            errorMessage.append(message);
+        }
+
+        // verify that the lhs is some type of storeLocation
+        if (! (this.storeLoc instanceof AstArrayAccessExpr
+                || this.storeLoc instanceof AstVarLocationExpr)
+                || this.storeLoc instanceof AstObjectPropertyExpr ) {
+            String message = "LHS is not a type of store location. Line: " + this.getLine();
             errorMessage.append(message);
         }
     }
