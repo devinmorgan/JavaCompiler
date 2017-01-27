@@ -1,0 +1,7 @@
+class A { }
+A foo() { return new B(); }
+class B extends A { }
+void main() {
+    A test;
+    test = foo();
+}

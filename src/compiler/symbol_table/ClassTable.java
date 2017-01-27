@@ -2,6 +2,7 @@ package compiler.symbol_table;
 
 import compiler.ast.decl.AstFuncDecl;
 import compiler.ast.decl.AstVarDecl;
+import compiler.ast.type.AstNonVoidType;
 import compiler.ast.type.AstType;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class ClassTable {
     String parentName;
     final HashSet<String> interfaces = new HashSet<>();
     final HashMap<Function, AstType> functions = new HashMap<>();
-    final HashMap<String, AstType> fields = new HashMap<>();
+    final HashMap<String, AstNonVoidType> fields = new HashMap<>();
 
     public HashSet<String> getInterfaces() {
         return this.interfaces;

@@ -1,0 +1,14 @@
+// inheritance can span multiple generations
+class A {
+    int i, j;
+    void initA() { i = 5};
+
+}
+class B extends A { }
+class C extends B {
+    void initC() {
+        initA();
+        this.j = 7;
+    }
+}
+void main() { }

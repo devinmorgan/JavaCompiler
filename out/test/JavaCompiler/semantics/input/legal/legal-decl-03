@@ -1,0 +1,13 @@
+Class A {
+    int i;
+    int j;
+    void init(int i, int j) {
+        i = i;
+        this.j = j;
+    }
+}
+
+void main() {
+    A test; test = new A();
+    A.init(5);
+}

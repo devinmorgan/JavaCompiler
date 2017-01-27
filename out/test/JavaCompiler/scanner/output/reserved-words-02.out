@@ -1,0 +1,4 @@
+line 2:0  IDENT Void
+line 3:0  IDENT string
+line 4:0  IDENT ReadLine
+line 5:0  IDENT New

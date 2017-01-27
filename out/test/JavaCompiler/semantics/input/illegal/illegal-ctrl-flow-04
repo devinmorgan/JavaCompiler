@@ -1,0 +1,6 @@
+// break-stmts can only reside inside loops
+void main() {
+    if (true) {
+        break;
+    }
+}

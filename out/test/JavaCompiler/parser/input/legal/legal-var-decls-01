@@ -1,0 +1,8 @@
+// valid VarDecls
+int i;
+boolean b;
+String s;
+Class c;
+String[] stringArray;
+int[][] intArray;       // yes we do have multi-dimensional arrays
+int x, y, z;            // you can declare multiple vars on the same line

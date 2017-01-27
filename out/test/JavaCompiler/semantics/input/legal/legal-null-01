@@ -1,0 +1,7 @@
+// valid uses of null key word
+Class A { }
+void main() {
+    String s; s = null;
+    A a; a = null;
+    int[] array; array = null;
+}

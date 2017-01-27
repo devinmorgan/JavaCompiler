@@ -1,0 +1,9 @@
+// valid creation and assignment of array
+void main() {
+    int[] test; text = new int[4];
+    test[0] = 5;
+    int x, y;
+    x = y = 1;
+    test[1] = x;
+    test[2] = y;
+}

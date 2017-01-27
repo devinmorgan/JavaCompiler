@@ -1,0 +1,3 @@
+line 3:8 no viable alternative at input 'if()'
+line 3:8 mismatched input ')' expecting {'(', '!', '-', 'this', 'readInt', 'new', 'readLine', 'null', BOOL, STRING, INT, ID}
+line 3:10 mismatched input '{' expecting {'[', ';', '.', '<', '>', '<=', '>=', '==', '!=', '&&', '||', '+', '-', '*', '/', '%', '='}

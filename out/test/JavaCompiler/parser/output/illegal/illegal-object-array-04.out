@@ -1,0 +1,2 @@
+line 3:4 mismatched input 'void' expecting {'(', '{', '}', '!', '-', 'String', 'this', 'while', 'break', 'readInt', 'int', 'if', 'new', 'readLine', 'boolean', 'null', 'for', 'return', 'print', 'continue', BOOL, STRING, INT, ID}
+line 3:8 mismatched input '[' expecting ID

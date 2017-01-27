@@ -1,0 +1,5 @@
+// illegal array access
+void main() {
+    array[5][10]; // valid access
+    array[5,10]; // Invalid access
+}

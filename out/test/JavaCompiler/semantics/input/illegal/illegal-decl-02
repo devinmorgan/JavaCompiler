@@ -1,0 +1,5 @@
+void main() {
+    j = 5; // no variable declared by time of use
+    int j;
+    j = 6;
+}

@@ -1,0 +1,4 @@
+// can't have duplicate classes of same name
+class A {}
+class A extends A { }
+void main() { }

@@ -1,0 +1,4 @@
+// primitives cannot be null
+void main() {
+    boolean b; b = null;
+}

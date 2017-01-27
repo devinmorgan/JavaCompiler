@@ -1,0 +1,8 @@
+// all subclasses of A are also I's!
+class A implements I{ }
+class B extends A { }
+interface I { }
+void main() {
+    I test;
+    test = new B();
+}

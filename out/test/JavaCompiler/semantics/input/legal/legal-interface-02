@@ -1,0 +1,15 @@
+// A implements all the methods of I successfully
+class A implements Object {
+    int i;
+    void init() {
+        this.i = 1;
+    }
+    int add(int i) {
+        return this.i + i;
+    }
+}
+interface Object {
+    void init();
+    int add(int i);
+}
+void main() { }

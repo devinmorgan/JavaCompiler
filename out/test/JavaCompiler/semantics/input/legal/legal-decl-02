@@ -1,0 +1,6 @@
+void main() {
+    j = 5;
+    int j;
+    j = 6;
+}
+int j;

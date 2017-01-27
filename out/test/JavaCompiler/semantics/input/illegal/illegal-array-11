@@ -1,0 +1,5 @@
+// dimension mismatch!
+void main() {
+    int[][][] test;
+    test = new int[][];
+}

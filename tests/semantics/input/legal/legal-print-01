@@ -1,0 +1,11 @@
+// valid uses of print
+void main() {
+    print(1);
+    print(false);
+
+    String s; s = "hello";
+    print(s);
+    print("\n");
+    print("world");
+
+}

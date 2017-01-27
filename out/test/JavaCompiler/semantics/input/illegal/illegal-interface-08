@@ -1,0 +1,4 @@
+// cannot inherit from an interface!
+class A extends I { }
+interface I {}
+void main() { }

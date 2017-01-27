@@ -1,0 +1,8 @@
+// all whitespace (\n, \t, and " ") should get ignored
+oneword
+one word
+one     word
+
+
+one
+word

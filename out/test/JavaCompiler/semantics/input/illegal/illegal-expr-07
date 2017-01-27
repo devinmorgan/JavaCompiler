@@ -1,0 +1,4 @@
+// invalid Lhs Expr (bad assignment)
+void main () {
+    0 = var;
+}

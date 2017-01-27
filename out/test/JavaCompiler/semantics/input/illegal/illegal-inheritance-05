@@ -1,0 +1,10 @@
+/* Since B inherits from A, it is true that B can be used wherever
+   A is used but NOT the other way around
+*/
+class A { }
+class B extends A { }
+B foo() { return new A(); }
+void main() {
+    B test;
+    test = foo();
+}

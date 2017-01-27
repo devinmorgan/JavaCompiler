@@ -5,6 +5,8 @@ import compiler.grammar.JavaScanner;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.ParseTree;
+
 import java.io.*;
 import java.util.BitSet;
 
@@ -119,7 +121,6 @@ class Main {
                 StringBuilder outputBuilder = new StringBuilder();
                 outputBuilder.append(testResults);
 
-//                System.out.println(testResults); // uncomment to debug
 
                 // load the expected output file
                 String illegalParserTestsOutputDirectory = "tests/parser/output/illegal/";
@@ -133,6 +134,8 @@ class Main {
                     illegalTestsPassed++;
                 }
                 else {
+//                    System.out.println(file.getPath()); // uncomment to debug
+//                    System.out.println(testResults); // uncomment to debug
                     testData.append("Testing " + file.getPath() + ":\n");
                     testData.append("Failed.\n");
                     testData.append(outputBuilder);
@@ -174,8 +177,6 @@ class Main {
                 StringBuilder outputBuilder = new StringBuilder();
                 outputBuilder.append(testResults);
 
-//                System.out.println(testResults); // uncomment to debug
-
                 // compare the actual output with the expected output
                 boolean passTest = outputBuilder.toString().equals("");
                 if (passTest) {
@@ -193,6 +194,17 @@ class Main {
         }
         System.out.println("Passed " + legalTestsPassed + "/" + legalTestFiles.length + " parser tests\n");
         System.out.println(testData);
+    }
+
+    private static void runSemanticTests() {
+        InputStream inputStream = new java.io.FileInputStream(CLI.infile);
+        JavaScanner lexer = new JavaScanner(new ANTLRInputStream(inputStream));
+        TokenStream tokens = new CommonTokenStream(lexer);
+        JavaParser parser = new JavaParser(tokens);
+        ParseTree tree = parser.program();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        DecafListener listener = new DecafListener();
+        walker.walk(listener, tree);
     }
 
     public static void main(String[] args) {

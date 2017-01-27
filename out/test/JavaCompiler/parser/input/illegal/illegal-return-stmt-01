@@ -1,0 +1,4 @@
+// invalid ReturnStmt
+int test() {
+    return "no semi-colon"
+}

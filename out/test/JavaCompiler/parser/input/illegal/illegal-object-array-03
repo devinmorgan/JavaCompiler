@@ -1,0 +1,4 @@
+// illegal array declaration
+void main() {
+    int[5][5] arr; // cannot declare with size
+}

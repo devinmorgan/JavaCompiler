@@ -1,0 +1,4 @@
+void main() {
+    int x; x = 5;
+    x[4] = 0; // x is an int!
+}

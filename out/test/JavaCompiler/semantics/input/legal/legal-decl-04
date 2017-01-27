@@ -1,0 +1,13 @@
+// testing shadowing of var decls
+void main() {
+    int i, j;
+    i = j = 5;
+    if (tru) {
+        int i;
+        i = 4;
+        {
+            int i;
+            i = j = 3;
+        }
+    }
+}

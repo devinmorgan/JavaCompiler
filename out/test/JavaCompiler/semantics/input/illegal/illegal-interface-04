@@ -1,0 +1,7 @@
+// A must implement all of I's methods exactly
+class A implements I {
+    void init(int k) { } // argument names don't match
+}
+interface I {
+    void init(int j);
+}

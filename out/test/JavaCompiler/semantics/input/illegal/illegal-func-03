@@ -1,0 +1,4 @@
+// illegal form of method overloading
+int foo(int i) { }
+int foo(int j) { }
+void main() { }

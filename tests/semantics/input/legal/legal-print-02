@@ -1,0 +1,4 @@
+// valid use of print()
+void main() {
+    print(true && false || true); // should print true btw...
+}

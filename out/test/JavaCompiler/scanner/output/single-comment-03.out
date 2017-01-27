@@ -1,0 +1,8 @@
+line 3:0  IDENT an
+line 3:3  IDENT invalid
+line 3:11  IDENT multi
+line 3:16  -
+line 3:17  IDENT lined
+line 3:23  IDENT comment
+line 3:31  *
+line 3:32  /

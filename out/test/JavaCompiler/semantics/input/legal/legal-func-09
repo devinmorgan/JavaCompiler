@@ -1,0 +1,8 @@
+// arguments can be vars or literals for function call
+int foo(int i, boolean b, String s) {
+    return 1;
+}
+void main() {
+    int i;
+    i = foo(i, false, "hello world");
+}

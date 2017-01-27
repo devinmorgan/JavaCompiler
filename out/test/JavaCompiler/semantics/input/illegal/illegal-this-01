@@ -1,0 +1,5 @@
+// this cannot be used outside of a class
+void main() {
+    int i;
+    this.i = 5;
+}

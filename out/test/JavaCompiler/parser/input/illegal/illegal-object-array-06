@@ -1,0 +1,4 @@
+// invalid property access
+void main() {
+    x = ident. ; // missing the property
+}

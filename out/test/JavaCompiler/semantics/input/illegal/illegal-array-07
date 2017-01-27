@@ -1,0 +1,5 @@
+class A {}
+void main () {
+    A test; test = new A();
+    test[5] = true; // test is not an array!
+}

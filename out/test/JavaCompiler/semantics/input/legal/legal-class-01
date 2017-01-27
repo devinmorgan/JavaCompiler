@@ -1,0 +1,7 @@
+// valid class declarations and uses
+class A { }
+class B { }
+void main() {
+    A a; a = new A();
+    B b; b = new B();
+}

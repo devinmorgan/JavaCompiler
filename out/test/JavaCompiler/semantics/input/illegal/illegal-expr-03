@@ -1,0 +1,5 @@
+// the arguments of || must be booleans not ints!
+void main() {
+    boolean b;
+    b = 5 || 7;
+}

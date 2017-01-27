@@ -1,0 +1,8 @@
+// C inherits from A so it can be used where A is
+class A { }
+class B extends A { }
+class C extends C { }
+void main() {
+    A[] arrayOfA;
+    arrayOfA = new C[5];
+}

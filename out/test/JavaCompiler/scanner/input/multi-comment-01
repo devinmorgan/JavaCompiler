@@ -1,0 +1,4 @@
+// multi-line comments must start with /* and end with */
+/ * not a valid comment */
+/* this comment shouldn't end * / here
+but in fact should continue to here */

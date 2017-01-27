@@ -1,0 +1,7 @@
+// legal reassignment of multi-dimensional array
+int[][][] return3dArray() {
+    return new int[0][0][0];
+}
+void main() {
+    return3dArray()[0] = new int[10][2];
+}

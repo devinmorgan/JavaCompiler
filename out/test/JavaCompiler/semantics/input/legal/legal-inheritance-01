@@ -1,0 +1,11 @@
+// since B is a child of A, B can refer to i
+class A {
+    int i;
+}
+class B extends A {
+    void init() {
+        this.i = 7;
+        i = 8;
+    }
+}
+void main() { }

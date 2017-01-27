@@ -1,0 +1,4 @@
+// valid implementation of interface I
+class A implements I {}
+interface I {}
+void main() { }

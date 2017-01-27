@@ -1,0 +1,9 @@
+// it is legal to chain properties within a class
+class Node {
+    Node next;
+
+    Node getNextNextNext() {
+        return this.next.next.next;
+    }
+}
+void main() { }

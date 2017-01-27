@@ -1,0 +1,7 @@
+line 2:0  IDENT oneword
+line 3:0  IDENT one
+line 3:4  IDENT word
+line 4:0  IDENT one
+line 4:8  IDENT word
+line 7:0  IDENT one
+line 8:0  IDENT word

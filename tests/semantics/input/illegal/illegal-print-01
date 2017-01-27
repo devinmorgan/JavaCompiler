@@ -1,0 +1,7 @@
+// print() does not work for object arguments);
+class A { }
+void main() {
+    A a; a = new A();
+    print(a);
+    print(new A());
+}

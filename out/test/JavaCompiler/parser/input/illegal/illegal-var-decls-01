@@ -1,0 +1,2 @@
+// invalid VarDecl
+int i   // missing semi-colon

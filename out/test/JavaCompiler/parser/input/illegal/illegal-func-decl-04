@@ -1,0 +1,2 @@
+// invalid FuncDecl
+int (int i, boolean b) { }  // missing function name

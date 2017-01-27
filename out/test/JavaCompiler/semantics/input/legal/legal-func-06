@@ -1,0 +1,19 @@
+// Legal! Value is returned at each path!
+int foo() {
+    if (true) {
+        if (true) {
+            if (true) {
+                return 1;
+            }
+            else {
+                return 1;
+            }
+        }
+        else {
+            return 1;
+        }
+    }
+    else {
+        return 1;
+    }
+}

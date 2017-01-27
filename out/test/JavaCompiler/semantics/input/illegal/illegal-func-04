@@ -1,0 +1,5 @@
+// illegal re-declaration of var in same scope
+void foo(int i) {
+    i = 5;
+    int i;
+}

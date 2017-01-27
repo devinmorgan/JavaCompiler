@@ -1,0 +1,4 @@
+// null is not a valid boolean
+void main() {
+    for(i = 5; null; i = i +1) { }
+}

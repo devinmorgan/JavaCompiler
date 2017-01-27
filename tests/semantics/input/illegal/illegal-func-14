@@ -1,0 +1,6 @@
+// duplicate declaration of methods. Methods are equivalent if
+// they have the same name, number of params, and the same
+// param types in the same order. Param names do not matter
+void tests(int i) { }
+void tests(int j) { }
+void main() { }

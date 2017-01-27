@@ -1,0 +1,8 @@
+// B cannot override init() from A and change the return type
+class A {
+    void init() { }
+}
+class B extends A {
+    int init() { }
+}
+void main() { }

@@ -1,0 +1,6 @@
+// A must implement all of the methods of I!
+class A implements I { }
+interface I {
+    void init();
+}
+void main() { }

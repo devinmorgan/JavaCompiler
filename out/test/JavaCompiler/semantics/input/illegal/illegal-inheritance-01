@@ -1,0 +1,8 @@
+// B (child) cannot re-declare the A (parent's) field
+class A {
+    int i;
+}
+class B extends A{
+    int i;
+}
+void main() { }

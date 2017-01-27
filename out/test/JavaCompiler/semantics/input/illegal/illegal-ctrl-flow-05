@@ -1,0 +1,6 @@
+// continue-stmts can only exist within the ctrl-flow stmts
+void main() {
+    int i; i = 5;
+    continue;
+    int j; j = 7;
+}

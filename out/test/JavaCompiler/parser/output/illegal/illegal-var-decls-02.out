@@ -1,0 +1,4 @@
+line 2:7 extraneous input 'int' expecting ID
+line 2:14 extraneous input 'String' expecting ID
+line 2:24 extraneous input '/' expecting {<EOF>, 'void', 'String', 'int', 'class', 'interface', 'boolean', ID}
+line 2:32 token recognition error at: '''

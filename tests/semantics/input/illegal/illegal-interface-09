@@ -1,0 +1,4 @@
+// Redundant interface use declarations!
+interface I { }
+class A implements I, I{ }
+void main() { }

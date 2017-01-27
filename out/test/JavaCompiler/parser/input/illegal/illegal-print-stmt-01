@@ -1,0 +1,4 @@
+// invalid PrintStmt
+void main() {
+    print(); // missing arguments
+}

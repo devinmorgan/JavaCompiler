@@ -24,7 +24,7 @@ public class AstNonVoidReturnStmt extends AstStmt {
         if (! environment.getCurrentScopeReturnType().equals(this.returnValue.getType())) {
             String message = "Type of return value " + this.returnValue.getType()
                     + " does not match return type from the method signature "
-                    + environment.getCurrentScopeReturnType() + ". Line " + this.getLine();
+                    + environment.getCurrentScopeReturnType() + ". Line " + this.getLine() + "\n";
             errorMessage.append(message);
         }
     }

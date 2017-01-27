@@ -1,0 +1,4 @@
+// valid ContinueStmt
+void main() {
+    continue;
+}

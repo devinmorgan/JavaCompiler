@@ -1,0 +1,4 @@
+// valid ForStmt
+void main() {
+    for (; true; ) { } // this is an inf loop lol
+}

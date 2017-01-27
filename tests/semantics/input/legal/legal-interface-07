@@ -1,0 +1,10 @@
+// the names of the local variables don't need to
+// match that of the interface's local variables
+// but the types and counts do. So, this is legal
+interface I {
+    void test(int var);
+}
+class A implements I  {
+    void test(int variable) { }
+}
+void main() { }

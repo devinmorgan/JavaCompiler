@@ -1,0 +1,12 @@
+/* If a B is operating as an A, then it is treated
+   as an A and, as such, cannot refer it any methods other
+   than those available to an A object.
+*/
+class A { }
+class B extends A {
+    void foo() { }
+}
+void main() {
+    A test; test = new B();
+    test.foo(); // illegal call to foo();
+}

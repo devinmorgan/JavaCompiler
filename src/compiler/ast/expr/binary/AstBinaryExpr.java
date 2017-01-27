@@ -1,6 +1,7 @@
 package compiler.ast.expr.binary;
 
 import compiler.ast.expr.AstExpr;
+import compiler.ast.type.AstType;
 
 /**
  * Created by devinmorgan on 1/5/17.

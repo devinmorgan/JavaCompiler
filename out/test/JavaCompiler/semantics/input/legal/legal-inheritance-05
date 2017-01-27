@@ -1,0 +1,18 @@
+// class B can override the methods it inherits from A
+class A {
+    int i;
+    int j;
+    void initA() {
+        this.i = 1;
+    }
+}
+class B extends A {
+    void initA() {
+        this.j = 1;
+    }
+    void initA(String s) {
+        // this method is an overloading
+        // of void initA() which is legal too!
+    }
+}
+void main() { }

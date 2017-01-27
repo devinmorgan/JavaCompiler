@@ -1,0 +1,8 @@
+// passed arguments must match the signature
+int foo(int i) {
+    return 1;
+}
+void main() {
+    int i;
+    i = foo("hello"); // bad argument
+}

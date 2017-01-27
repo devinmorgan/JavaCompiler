@@ -1,0 +1,6 @@
+void main() {
+    if (true) {
+        int i;
+        int i; // illegal second declaration of i
+    }
+}

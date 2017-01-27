@@ -1,0 +1,11 @@
+// there are a ton of reasons why this is wrong...
+class A {
+    int method() {
+        return 1;
+    }
+}
+void main() {
+    A test; test = new A();
+    int x;
+    x = (5+4).test.method();
+}

@@ -1,0 +1,4 @@
+// valid Expr
+void main() {
+    !(foo && bar);
+}

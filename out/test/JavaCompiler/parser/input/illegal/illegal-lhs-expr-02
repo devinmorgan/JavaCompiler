@@ -1,0 +1,4 @@
+// invalid Lhs Expr (bad array access)
+void main() {
+    ar[ar] = [ar];
+}

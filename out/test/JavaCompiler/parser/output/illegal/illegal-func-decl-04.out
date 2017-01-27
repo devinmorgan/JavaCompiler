@@ -1,0 +1,3 @@
+line 2:4 no viable alternative at input 'int('
+line 2:12 extraneous input 'boolean' expecting ID
+line 2:21 extraneous input ')' expecting {',', ';'}

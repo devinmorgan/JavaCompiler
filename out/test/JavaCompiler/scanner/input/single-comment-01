@@ -1,0 +1,4 @@
+// valid single-line comments must begin with 2 //
+/ not a valid single-line comment
+/ / still not a valid single-line comment
+// this single-line comment isn't valid since it doesn't end with a newline

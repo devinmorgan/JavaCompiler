@@ -1,0 +1,6 @@
+class A { }
+
+void main() {
+    A[] test; test = new A[5];
+    test[0] = 1; // can't assign to a different Type
+}

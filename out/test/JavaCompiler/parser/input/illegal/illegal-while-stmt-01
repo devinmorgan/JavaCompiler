@@ -1,0 +1,4 @@
+// invalid WhileStmt
+void main() {
+    while { } // need a condition
+}

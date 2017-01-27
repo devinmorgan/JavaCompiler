@@ -1,0 +1,7 @@
+// A must implement all of I's methods exactly
+class A implements I {
+    void init(boolean i, int j) { } // arguments in wrong order
+}
+interface I {
+    void init(int j, boolean i);
+}

@@ -1,0 +1,4 @@
+void main() {
+    int[] t1; t1 = new int[4];
+    t1 = new boolean[4]; // can't re-assign t1 to be a different type
+}

@@ -3,6 +3,7 @@ package compiler.symbol_table;
 import compiler.ast.AstInterfaceUse;
 import compiler.ast.AstMethodSig;
 import compiler.ast.decl.*;
+import compiler.ast.type.AstNonVoidType;
 import compiler.ast.type.AstType;
 
 import java.util.HashMap;
@@ -12,11 +13,11 @@ import java.util.Stack;
  * Created by devinmorgan on 1/11/17.
  */
 public class SymbolTable {
-    final HashMap<String, AstType> globalVars = new HashMap<>();
+    final HashMap<String, AstNonVoidType> globalVars = new HashMap<>();
     final HashMap<Function, AstType> staticFunctions = new HashMap<>();
     final HashMap<String, ClassTable> classes = new HashMap<>();
     final HashMap<String, InterfaceTable> interfaces = new HashMap<>();
-    final Stack<HashMap<String, AstType>> scopeStack = new Stack<>();
+    final Stack<Scope> scopeStack = new Stack<>();
 
     /*---------------------------Build Symbol Table Functions---------------------------*/
 
@@ -122,15 +123,29 @@ public class SymbolTable {
         return (this.classes.containsKey(id) || this.interfaces.containsKey(id));
     }
 
-    public boolean addVariableDeclarationToLocalScope(String name, AstType type) {
-        if (this.scopeStack.peek().containsKey(name))
+    /**
+     *
+     * @param name name of the variable to add to the local scope
+     * @param type AstType of the variable to add to the local scope
+     * @param errorMessage StringBuilder that contains the cumulative
+     *                     error message from the semantic analysis
+     * @return true if the variable was successfully added to the local
+     * scope. false if a duplicate variable already exists in the local
+     * scope
+     */
+    public boolean addVariableDeclarationToLocalScope(String name,
+                                                      AstType type,
+                                                      StringBuilder errorMessage) {
+        if (this.scopeStack.peek().variables.containsKey(name)) {
+            String message = "Duplicate declaration of variable with name "
+                    + name + ". Line: " + type.getLine() + "\n";
+            errorMessage.append(message);
             return false;
-        this.scopeStack.peek().put(name, type);
-        return true;
-    }
-
-    public boolean isVariableDeclaredInLocalScope(String name) {
-        return this.scopeStack.peek().containsKey(name);
+        }
+        else {
+            this.scopeStack.peek().variables.put(name, type);
+            return true;
+        }
     }
 
     public void checkClassesForSemanticErrors(StringBuilder errorMessage) {
@@ -200,11 +215,61 @@ public class SymbolTable {
     }
 
     public void pushNewScope() {
-        this.scopeStack.push(new HashMap<>());
+        this.scopeStack.push(new Scope());
+    }
+
+    public void pushNewFunctionScope(AstType returnType) {
+        this.scopeStack.push(new Scope(returnType));
+    }
+
+    public void pushNewClassScope(String className) {
+        this.scopeStack.push(new Scope(className));
     }
 
     public void popLocalScope() {
         this.scopeStack.pop();
+    }
+
+    public AstType getCurrentScopeReturnType() {
+        return this.scopeStack.peek().returnType;
+    }
+
+    public void enterLoop() {
+        this.scopeStack.peek().enterLoop();
+    }
+
+    public void exitLoop() {
+        this.scopeStack.peek().exitLoop();
+    }
+
+    public boolean isCurrentlyInALoop() {
+        return this.scopeStack.peek().currentlyInALoop;
+    }
+
+    public AstType lookupVariableType(String varName) {
+        // look through the scope stacks until the first instance
+        // of the variable is found
+        for (Scope scope : this.scopeStack) {
+            if (scope.variables.containsKey(varName)) {
+                return scope.variables.get(varName);
+            }
+        }
+        return null;
+    }
+
+    public String getNameOfCurrentClass() {
+        // look through the scopes to find one with a className
+        for (Scope scope : this.scopeStack) {
+            if (scope.className != null) {
+                return scope.className;
+            }
+        }
+        return null;
+    }
+
+    public AstNonVoidType getTypeForFieldOfClass(String varName, String className) {
+        ClassTable classTable = this.classes.get(className);
+        return classTable.fields.get(varName);
     }
 
 }

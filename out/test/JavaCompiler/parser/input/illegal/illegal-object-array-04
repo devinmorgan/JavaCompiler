@@ -1,0 +1,4 @@
+// illegal array declaration
+void main() {
+    void[] array;
+}

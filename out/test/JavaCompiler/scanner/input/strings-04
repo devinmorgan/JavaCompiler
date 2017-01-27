@@ -1,0 +1,3 @@
+// no chars and single quotes are not strings
+'a'
+'this is not a string'

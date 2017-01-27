@@ -1,0 +1,9 @@
+// some valid nested assignments
+void main() {
+    int x,y;
+    x = 5;
+    y = 1 + (x = 2);
+
+    int z;
+    z = x = y = 2;
+}

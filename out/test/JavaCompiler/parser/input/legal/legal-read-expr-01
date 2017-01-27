@@ -1,0 +1,5 @@
+// valid read Expr
+void main() {
+    var = 5 + readInt();
+    print(readLine()); // readLine() returns a STRING
+}

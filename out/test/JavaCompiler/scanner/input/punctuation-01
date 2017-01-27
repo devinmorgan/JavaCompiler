@@ -1,0 +1,25 @@
+// make sure all the symbols and operators get recognized
++
+-
+*
+/
+%
+<
+<=
+>
+>=
+=
+==
+!=
+&&
+||
+!
+;
+,
+.
+[
+]
+(
+)
+{
+}

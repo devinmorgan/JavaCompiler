@@ -1,0 +1,2 @@
+// invalid InterfaceDecl
+interace A { }      // its misspelled

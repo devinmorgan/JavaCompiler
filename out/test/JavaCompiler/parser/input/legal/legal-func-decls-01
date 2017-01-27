@@ -1,0 +1,5 @@
+// valid FuncDecls
+void main() { }
+void foo(int i, boolean b, String s, Class c) { }
+int[][] bar() { }
+Class foobar(int i, boolean b, String s, Class c) { }

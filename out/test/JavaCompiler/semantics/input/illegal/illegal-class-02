@@ -1,0 +1,4 @@
+// each class must have a different name
+class A {}
+class A {}
+void main() { }

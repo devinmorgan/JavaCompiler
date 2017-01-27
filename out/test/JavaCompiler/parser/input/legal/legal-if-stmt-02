@@ -1,0 +1,10 @@
+// valid IfStmt
+int g() {
+    if (false)
+            return hello;
+    else
+        return goodbye;
+
+    if (!false) { }
+    else { print("hello"); }
+}

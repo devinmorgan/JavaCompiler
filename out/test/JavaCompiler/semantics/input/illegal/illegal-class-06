@@ -1,0 +1,4 @@
+// A was never declared!
+void main() {
+    (new A());
+}

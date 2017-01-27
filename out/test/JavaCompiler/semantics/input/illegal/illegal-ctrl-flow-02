@@ -1,0 +1,4 @@
+// umm...arrays are not booleans
+void main() {
+    while ((new int[5])) { }
+}

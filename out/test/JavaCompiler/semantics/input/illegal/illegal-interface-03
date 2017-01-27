@@ -1,0 +1,8 @@
+// A must implement all of the methods I exactly
+class A implements I {
+    int init(); // method signature does not match!
+}
+interface I {
+    void init();
+}
+void main() {}

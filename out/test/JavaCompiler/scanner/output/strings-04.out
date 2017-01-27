@@ -1,0 +1,10 @@
+line 2:0  token recognition error at: '''
+line 2:1  IDENT a
+line 2:2  token recognition error at: '''
+line 3:0  token recognition error at: '''
+line 3:1  this
+line 3:6  IDENT is
+line 3:9  IDENT not
+line 3:13  IDENT a
+line 3:15  IDENT string
+line 3:21  token recognition error at: '''

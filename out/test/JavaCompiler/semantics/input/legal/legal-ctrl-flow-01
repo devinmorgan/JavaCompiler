@@ -1,0 +1,5 @@
+// conditions of ctrl flow must be booleans
+void main() {
+    boolean b; b = true;
+    if (b) { }
+}

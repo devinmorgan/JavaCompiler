@@ -1,0 +1,7 @@
+// valid StmtBlock
+void main() {
+    int i;
+    print("hello world");
+    boolean b;
+    readInt();
+}

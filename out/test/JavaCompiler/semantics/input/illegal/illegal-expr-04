@@ -1,0 +1,5 @@
+// argument of ! must be a boolean;
+void main() {
+    int x;
+    x = !-5;
+}

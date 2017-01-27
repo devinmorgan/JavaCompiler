@@ -1,0 +1,3 @@
+// strings cannot be split onto 2 lines
+"this string spills onto 2
+lines, which isn't allowed"

@@ -1,0 +1,4 @@
+// invalid print stmt since the expr is invalid
+void main() {
+    print(1 + true);
+}

@@ -1,0 +1,11 @@
+// a class's methods can be accessed with or without this
+class A {
+    int foo() { return 1; }
+    int bar() {
+        int i, j;
+        i = foo();
+        j = this.foo();
+        return i + J;
+    }
+}
+void main() { }

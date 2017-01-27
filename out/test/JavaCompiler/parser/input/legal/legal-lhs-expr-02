@@ -1,0 +1,6 @@
+// valid Lhs Expr
+void main() {
+    var = var;
+    obj.property = obj.property;
+    ar[ar] = ar[ar];
+}

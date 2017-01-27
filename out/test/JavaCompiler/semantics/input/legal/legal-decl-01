@@ -1,0 +1,9 @@
+// field are visible for a more inner scope
+// if they were declared anywhere outside the
+// functions scope (2 pass compiler)
+int i;
+void main() {
+    i = 5;
+    j = 6;
+}
+int j;

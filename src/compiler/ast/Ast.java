@@ -1,5 +1,7 @@
 package compiler.ast;
 
+import compiler.symbol_table.SymbolTable;
+
 /**
  * Created by devinmorgan on 1/5/17.
  */
@@ -19,4 +21,6 @@ public abstract class Ast {
     public int getCol() {
         return col;
     }
+
+    public abstract void performSemanticAnalysis(SymbolTable environment, StringBuilder errorMessage);
 }

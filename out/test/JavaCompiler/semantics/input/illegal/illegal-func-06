@@ -1,0 +1,3 @@
+// all parameters must have different names
+int foo(int i, String s, boolean i) { };
+void main() { }

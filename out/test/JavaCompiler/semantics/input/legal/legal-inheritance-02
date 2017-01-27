@@ -1,0 +1,12 @@
+// B can use this or not to access A's methods
+class A {
+    void initA() { }
+    void foo() { }
+}
+class B extends A {
+    void initB() {
+        initA();
+        this.foo();
+    }
+}
+void main() { }

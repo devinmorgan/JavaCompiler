@@ -1,0 +1,11 @@
+// this is a problem because A doesn't implement the version of test from I2
+interface I1 {
+    void test(int i);
+}
+interface I2 {
+    int test(int j);
+}
+class A implements I1, I2{
+    void test(int i) { }
+}
+void main() { }

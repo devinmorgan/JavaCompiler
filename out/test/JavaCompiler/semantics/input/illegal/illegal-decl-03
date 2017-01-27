@@ -1,0 +1,6 @@
+void main () {
+    int j;
+    j = 5;
+    int j; // illegal re-declaration of j
+    j = 6;
+}

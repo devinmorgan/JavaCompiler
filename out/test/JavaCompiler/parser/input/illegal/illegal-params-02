@@ -1,0 +1,2 @@
+// invalid Params
+boolean foo(, int i, boolean b) { } // can't be empty
